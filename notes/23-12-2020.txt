@@ -1,0 +1,131 @@
+9845543403
+
+0 1 -> bits
+
+Mainframe Computers
+
+Super Computers
+
+Computer h/w
+1. CPU - P
+2. ALU
+3. Microprocessor
+4. RAM
+5. Keyboard -P
+6. Monitor - P
+7. Mouse -P 
+8. Speakers - P
+9. Printer -P
+10. Graphic card
+11. Motherboard
+12. Hard disk
+13. Video card
+14. Cables - P
+15. circuits
+15. Power Supply
+16. CD Drive
+17. Pen drive - P
+18. Web cam -
+19. I/O Ports
+20. HDMI port
+21. Network card
+22. ROM
+
+
+Software
+1. system s/w
+2. application s/w
+
+OS
+1. Linux
+2. Android OS
+3. Windows
+4. Mac OS
+5. DOS
+6. Unix
+7. iOS
+8. Haiku OS
+
+Functions:
+1. Process management
+2. memory management
+3. disk management
+4. network management
+5. security management
+
+32 bit OS -> 2^32 memory addresses -> 4GB of RAM
+64 bit OS -> 2^64 memory addresses -> 8GB of RAM
+
+Boot Process Steps
+1. System Startup -> loads the BIOS
+2. BootLoader - Boot Records
+3. Startup of OS
+4. Initialization
+
+Application s/w
+
+Network Concepts
+n/w devices
+	routers
+	switches
+	hubs
+	bridges
+
+Topology
+bus
+mesh
+star
+ring
+hybrid
+
+Area wise n/w
+1. LAN
+2. WAN
+3. MAN
+
+Protocols -> set of network rules
+1. TCP/IP
+2. FTP
+3. HTTP
+4. UDP
+5. HTTPS
+6. SMTP
+7. SNTP
+8. ICMP
+9. DHCP
+10.IGMP
+11. TELNET
+12. POP
+13. IMAP
+14. SNMP
+15. TTP
+16. SSH
+17. DNS
+18. SGMP
+
+
+Network Layers
+7. Application Layer -> DHCP, HTTP, HTTPS, DNS, FTP, SMTP, IMAP,  SSH, TelNet, SNMP
+6. Presentation Layer -> RPC, LPP
+5. Session Layer -> RPC, 
+4. Transport Layer -> TCP/IP, UDP, POP
+3. Network layer -> IP, IPV6, ICMP
+2. Data link layer -> ARP
+1. Physical layer
+
+Shubham - Parallel computing
+Hasan - Serial Computing
+Azar - Concurrent Computing
+Manpreet - Distributed Computing
+
+
+
+
+
+
+
+geeksforgeeks.org/operating-systems/
+
+
+
+
