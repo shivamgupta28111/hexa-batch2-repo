@@ -1,0 +1,88 @@
+UNIX -> Character User Interface OS
+AT & T
+
+Unix OS has a layered architecture
+
+Layer 1 -> hardware
+Layer 2 -> Kernel
+Layer 3 -> Commands and Utilities
+Layer 4 -> Shell and other application programs
+
+Commands
+1. pwd -> present working directory
+2. cd -> change directory
+3. mkdir -> make directory
+4. touch <filename> -> creates an empty file
+5. rm -> to remove a file
+6. rmdir -> remove a directory
+7. ls -> list directory
+8. ls -a -> show hidden files and folders
+9. ls -l -> long listing
+10. cp <source> <destination> -> to copy files and folders
+11. mv <source> <destination> -> move or rename files and folders
+12. ls -R -> recursive listing
+13. man -> to display the man pages for a command
+14. help -> similar to man
+15. chmod -> used to change permissions
+16. cat -> to create a file and to display the contents of a file
+
+Permissions -> R(4) W(2) X(1)
+	Given in 3 sets 
+	1. User -> Owner of files or folders
+	2. Group -> represents the department
+	3. Others -> everybody else
+
+Wildcards - * (multiple chars) and ?(single char)
+$> ls a* => list all files and folders starting with a
+$> ls a? => list all files and folders starting with a followed by a single character
+
+Filters:
+	Text processing commands
+	1. grep
+	2. sort => sort filename
+	3. head => head -n filename
+	4. tail => tail -n filename
+	5. wc (word count) => wc filename
+		-l -> no of lines
+		-w -> no of words
+		-c -> no of chars
+	6. cut
+	7. tr
+	8. uniq => uniq filename
+
+In Git Bash, try UNIXCOMMAND --help. ex: ls --help
+
+Vi Editor: one of the classic text editors. 
+
+i -> insert mode
+a -> append mode
+
+Press ESC before using the below commands:
+u -> undo last change
+U -> undo all the changes to that line
+dd -> delete a line
+2dd -> delete 2 lines
+dw -> delete a word
+cw -> change a word
+x -> delete a char at the end of the line
+r -> replace a character
+s -> substitute a character under the cursor and then continue to insert
+
+to navigate the Vi editor
+k - move up
+j - move down
+h - move left
+l - move right
+
+For saving a file
+:w -> save a file
+:wq -> save and quit
+:q! -> quit without saving
+Shift + zz -> save and quit
+
+
+
+
+
+
+
