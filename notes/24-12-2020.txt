@@ -1,0 +1,43 @@
+Quick sort
+bubble sort
+heap sort
+insertion sort
+merge sort
+selection sort
+
+
+Data structures:
+1. based on arrangement: 
+	Linear
+		array, stack, queue, linked list
+	non-linear
+		tree, graphs
+2. based on memory allocation
+	compile-time or fixed or static
+		array
+	run-time or dynamic
+		stack, queue, linked list, tree, graphs
+
+Array: fixed size, elements arranged sequentially, all elements of same type
+
+Stack: dynamic. Push (insert or add), Pop (remove), Peek (next element). LIFO
+Queue: dynamic. FIFO. Insert (Enqueue), Remove (Dequeue), Peek
+DeQue: Double - ended queue
+Priority Q: 
+
+Linked List: Nodes -> element, address of the next node, InsertFront, InsertEnd, InsertMid
+	RemoveFront, RemoveEnd, RemoveMid
+Doubly Linked List: Nodes: address of prev node, element, addr of the next node
+Circular Linked List:
+
+Tree: non-linear. node with 2 child nodes. initial value on a tree -> root node.
+	a child node without children -> leaf node
+	left is greater than root, right is lesser than root
+
+Tree traversals:
+	Inorder:LRR'
+	Preorder:RLR'
+	Postorder:LR'R
+
+Graphs: non-linear. Edges and verticies (Nodes)
+
