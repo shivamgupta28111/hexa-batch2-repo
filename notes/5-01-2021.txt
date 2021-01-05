@@ -1,0 +1,87 @@
+DML
+
+INSERT
+	Multi - row insert
+		INSERT INTO <TABLENAME> VALUES 
+			(VALUELIST 1),
+			(VALUELIST 2),
+			(....),
+			.....;
+
+	Insert into Select
+		INSERT INTO TABLE_NAME (COLUMNS)
+		SELECT
+			LIST
+		FROM
+			TABLE2
+		WHERE
+			CONDITION;
+
+UPDATE
+	UPDATE TABLE_NAME SET COLUMN = NEW_VALUE WHERE CONDITION
+	EX: update suppliers set s_password = 'inverta21' where supplierId = '2002'; -- for 1 record
+	ex: update items set unitprice = 120000 where brand = 'Apple'; -- multiple records
+
+DELETE
+	DELETE FROM TABLE_NAME WHERE CONDITION
+	ex: delete from items where itemId = 4001; -- deletes 1 record
+	    
+	    delete from items where supplierid = 2010; -- deletes multiple records
+
+	    delete from items; -- deletes all records
+
+	    delete from items limit 2;
+
+DQL
+SELECT: output is a virtual table called VIEW
+
+	SELECT select_list FROM table
+	
+Ex:
+	select * from items; -- displays all records
+
+	select itemid, itemname, supplierid from items; -- displays all records with t3 column information
+
+FILTERS:
+    where -> conditional
+         SELECT LIST FROM TABLE WHERE CONDITION
+
+    having
+    group by 
+	groups multiple rows together based on a condition
+	SELECT COLUMNS, AGGREGRATE FUNCTIONS
+	FROM TABLE 
+	WHERE CONDITION
+	GROUP BY COLUMNS
+
+    order by -> sorting
+	SELECT COLUMNS
+	FROM TABLE
+	ORDER BY COLUMN1 [ASC | DESC], ..., ...;
+    
+    in -> for list
+    between -> for ranges
+    not in
+    not between
+    like (wildcards %, _)
+    is null
+    limit
+
+        
+AGGREGRATE FUNCTIONS:
+   count
+   sum
+   avg
+   max
+   min	
+
+Joins
+Subqueries
+
+
+
+
+
+
+
+
