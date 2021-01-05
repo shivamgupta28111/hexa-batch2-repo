@@ -67,16 +67,35 @@ FILTERS:
     is null
     limit
 
-        
-AGGREGRATE FUNCTIONS:
+
+Functions:     
+1. AGGREGRATE FUNCTIONS:
    count
    sum
    avg
    max
    min	
 
-Joins
-Subqueries
+2. String functions:
+   concat
+   left
+   right
+   length
+   replace
+   substring
+   upper
+   lower 
+
+3. Date functions:
+   curdate
+   datediff
+   day
+   month
+   year
+   date_add
+   now
+   sysdate
+
 
 
 
