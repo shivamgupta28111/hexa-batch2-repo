@@ -1,0 +1,104 @@
+DBMS -> DataBase Management System
+   Tables -> rows and columns
+   DBMS-IV
+
+Relational Database Management System
+MS SQL
+MySQL
+Oracle
+SQL Server
+PostGres
+
+
+NoSQL Database
+
+SQL -> Structured Query Language
+
+Advantages
+1. Control Data redundancy
+2. Data sharing
+3. Allows for backup and restoration
+4. Security
+
+Disadvantages
+1. cost of the hardware and software
+2. Complexity
+
+RDBMS -> based on Relational Model.
+  tables can be related to each other
+  data is stored in rows and columns within a table
+  each row -> tuple
+  each column -> attribute (name of the column)
+
+MySQL
+Datatype -> signifies the type of data to store
+  Integer -> store whole numbers -> int
+  Float -> decimal numbers -> float
+  Double -> decimal numbers -> double
+  Boolean -> boolean values (True/false) ->bool
+  Year -> stores year -> year
+  date -> for date -> date
+  month
+  day
+  datetime -> starts from 1000-01-01 -> datetime
+  timestamp -> starts from 1970 -01-01 -> timestamp
+  varchar(size) -> store a string - 255 characters-> varchar()
+  text(size) -> 65,355 characters -> text()
+  enum
+  blob(size) -> binary large object - 65,355 bytes
+  longblob -> upto 4GB
+
+Variables -> named locations in memory which stores data of a particular datatype
+1. User-defined variable
+2. Local variable
+3. System variable
+
+DML -> Data Manipulation language -> Insert, Update and Delete
+DDL -> Data Definition Language -> Create, alter, Truncate, drop
+TL -> Transaction Language -> grant, revoke, commit, rollback, savepoint
+DQL -> Data Query Language -> Select
+
+Create TAble:
+1. name of table
+2. attributes -> names of columns
+3. definition for the attributes
+4. constraints
+
+Normalization -> process of reducing data redundancy in the database.
+1 to 6 NF, BCNF
+
+DDL -> create, alter
+create database <name>; -- creates a database
+create table <name> (
+  column1 datatype constraint,
+  ...
+  ...
+  ...); -- creates a table
+
+To modify the structure of a table -> alter table
+alter table <name> add constraint foreign key (column) references <table2>(column); -- to add a foreign key
+
+alter table <name> add column_name datatype constraint; -- add a column to a table
+
+desc <tablename>; -- describe the structure of the table 
+
+
+DML
+Insert -> used to add data to a table
+
+  INSERT INTO <TABLENAME> [(COLUMN LIST)] VALUES (VALUE LIST); -- inserts 1 row
+
+  Multi-row insert
+  INSERT INTO <TABLENAME> (COLUMN LIST) VALUES 
+	(VALUE LIST1),
+ 	(VALUE LIST2),
+        .....
+	.....
+	.....;
+
+
+
+
+
+
+

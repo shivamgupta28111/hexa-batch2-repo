@@ -1,0 +1,69 @@
+SDLC -> Software Development Life Cycle
+1. Requirement Gathering
+2. Analysis
+3. Designing 
+4. Development
+5. Testing
+6. Deployment and Maintenance
+
+SDLC Models
+1. Waterfall
+2. Iterative 
+3. Sprial
+4. Incremental
+5. V Model
+6. Prototype
+7. Agile
+
+Agile methodologies
+1. Scrum
+2. Kanban
+3. Extreme Programming
+4. Feature Driven Development
+5. Crystal
+
+
+Scrum: 
+	agile framework
+	can resolve complex product issues with an agile approach
+	deliver quality products
+
+lightweight
+simple and easy
+
+Scrum consists of:
+	Roles -> Product Owner, Dev or Scrum Team, Scrum Master
+	Artifacts ->Product Backlog, Sprint Backlog
+	Rules
+	Events -> Sprint, Sprint Planning, Daily Scrum, Sprint Retrospective
+
+
+Git
+Open source version control tool
+1. Working Directory
+2. Staging Area
+3. Local Repository
+
+Remote Repo
+
+Commands
+git add 
+git commit
+git push
+git pull
+git clone
+git fetch
+git init
+git status
+git stash
+git log
+git merge
+git reset
+git branch
+git checkout
+git show
+git remote
+git diff
+git rebase
+
+ 
