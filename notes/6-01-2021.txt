@@ -1,0 +1,108 @@
+JOINS:
+A join is a method of linking and extracting data from mulitple tables (in special cases from a single table). This is based on a common column.
+
+Types:
+1. Inner Join
+2. Self Join
+3. Outer Join
+    a. Left Outer Join / Left Join
+    b. Right Outer Join / Right Join
+4. Cross Join
+
+Inner Join:
+  compares each row of two tables and returns only the matched values
+  
+	SELECT COLUMN_LIST FROM TABLE1
+	INNER JOIN TABLE2 ON JOIN_CONDITION
+EX:
+select m.memberId, m.memberName, c.committeeId, c.committeeName
+from members m
+INNER JOIN 
+committees c
+ON c.committeeName = m.memberName;
+
+select m.memberId, m.memberName, c.committeeId, c.committeeName
+from members m
+INNER JOIN 
+committees c
+USING (committeeName); -- to be used when the comparison column name is the same in the two tables
+
+select m.memberId, m.memberName, c.committeeId, c.committeeName
+from members m, committees c
+where m.memberName = c.committeeName;
+
+select members.memberId, members.memberName, committees.committeeId, committees.committeeName
+from members, committees
+where members.memberName = committees.committeeName;
+
+LEFT Join:
+	All the rows from table1 and matching rows from table2 are displayed
+	SELECT COLUMN_LIST FROM TABLE1
+	LEFT JOIN TABLE2 ON JOIN_CONDITION
+
+RIGHT JOIN:
+	All the rows from table2 and the matching rows from table1 are displayed
+	SELECT COLUMN_LIST FROM TABLE1
+	RIGHT JOIN TABLE2 ON JOIN_CONDITION
+
+CROSS JOIN:
+	returns a Cartesian product of the two tables.
+	SELECT COLUMN_LIST FROM TABLE1
+	CROSS JOIN TABLE2
+
+SELF JOIN:
+	joining a table to itself
+        select column_list from table1 t1
+	inner join table1 t2
+	on t1.columnname = t2.columnname
+
+SUBQUERIES:
+  Ex:
+	select lastname, salary from employees where salary >
+		(select salary from employees where lastname = 'Lanson');
+
+
+=======================================================================================
+MAVEN
+   -> build tool
+   -> scaffold a basic project structure
+
+Build tool:
+   -> generate some basic source code
+   -> generate documentation
+   -> compile source code
+   -> package code to JAR or WAR (Web ARchive)file
+
+IDE -> Integrated Development Environment
+
+POM.xml -> file with the packages to be installed along with their versions
+
+Maven Repository:
+1. Local Repository 
+2. Central Repository
+3. Remote Repository
+
+jar -> java archive -> similar to header files
+----------------------------------
+
+POM.xml
+  -> Project Object Model
+  -> contains information about the project and its confirguarion information => dependendies, test packages, plugins, directory locations etc.
+
+components:
+project
+modelversion
+groupid
+artifactid
+packaging
+name
+url
+plugins
+plugin
+dependecies
+dependecy
+scope
+
+
+
+
