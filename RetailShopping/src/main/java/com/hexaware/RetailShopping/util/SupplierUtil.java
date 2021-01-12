@@ -2,7 +2,7 @@ package com.hexaware.RetailShopping.util;
 
 import java.util.Scanner;
 
-import com.hexaware.RetailShopping.model.Supplier;
+//import com.hexaware.RetailShopping.model.Supplier;
 
 /**
  * Supplier Utility class.
@@ -19,7 +19,7 @@ public class SupplierUtil {
     System.out.println("-------------Supplier Menu-------------");
     System.out.println("1. Register");
     System.out.println("2. Login");
-    System.out.println("3. Back to Main Menu");
+    System.out.println("3. Exit");
     int ch = option.nextInt();
 
     switch (ch) {
@@ -27,8 +27,7 @@ public class SupplierUtil {
         break;
       case 2: supplierLogin();
         break;
-      case 3: CliMain cm = new CliMain();
-        cm.mainMenu();
+      case 3: Runtime.getRuntime().halt(0);
       default:
         System.out.println("Please choose 1, 2 or 3");
         supplierMenu();

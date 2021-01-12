@@ -12,7 +12,7 @@ public class CliMain {
   /**
    * main menu method.
    */
-  final void mainMenu() {
+  private void mainMenu() {
     System.out.println("==============RETAIL SHOPPING SYSTEM================");
     System.out.println("____________________________________________________");
 

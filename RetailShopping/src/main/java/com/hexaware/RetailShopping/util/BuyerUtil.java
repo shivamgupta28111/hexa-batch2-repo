@@ -19,7 +19,7 @@ public class BuyerUtil {
     System.out.println("----------------Buyer Menu----------");
     System.out.println("1. Register");
     System.out.println("2. SignIn");
-    System.out.println("3. Back to Main Menu");
+    System.out.println("3. Exit");
     int ch = opt.nextInt();
 
     switch (ch) {
@@ -27,9 +27,7 @@ public class BuyerUtil {
         break;
       case 2: buyerSignIn();
         break;
-      case 3: CliMain cm = new CliMain();
-        cm.mainMenu();
-        break;
+      case 3: Runtime.getRuntime().halt(0);
       default:
         System.out.println("Please choose either 1, 2 or 3");
         buyerMenu();
@@ -54,10 +52,10 @@ public class BuyerUtil {
     String pass = opt.next();
 
     //store the buyerId here and pass it on to the next method calls
-    int thisBuyer = 0;
+    int currentBuyer = 102;
 
     int ch = 0;
-    if (user.equals("2001") && pass.equals("2001")) {
+    if (user.equals("test") && pass.equals("test123")) {
       do {
         System.out.println("1. Personal Details");
         System.out.println("2. Items Menu");
@@ -67,29 +65,29 @@ public class BuyerUtil {
         ch =  opt.nextInt();
 
         switch (ch) {
-          case 1: showBuyerDetails(thisBuyer);
+          case 1: showBuyerDetails(currentBuyer);
             break;
-          case 2: itemsMenu();
+          case 2: //itemsMenu();
             break;
-          case 3: orderHistory(thisBuyer);
+          case 3: //orderHistory(currentBuyer);
             break;
-          case 4: checkBalance(thisBuyer);
+          case 4: //checkBalance(currentBuyer);
             break;
           case 5: Runtime.getRuntime().halt(0);
           default: System.out.println("Choose from 1, 2 ,3 and 4 only");
             break;
         }
-      } while (ch < 4);
+      } while (ch > 0 && ch < 5);
     }
   }
 
-  private void itemsMenu() {
+  // private void itemsMenu() {
 
-  }
+  // }
 
-  private void orderHistory(final int argBuyer) {
+  // private void orderHistory(final int argBuyer) {
 
-  }
+  // }
 
   private void showBuyerDetails(final int argBuyer) {
     System.out.println("1. Display Details");
@@ -98,9 +96,12 @@ public class BuyerUtil {
     int ch = opt.nextInt();
 
     switch (ch) {
-      case 1: System.out.println("Fetching details soon");
+      case 1: //System.out.println("Fetching details soon");
+        Buyer b = new Buyer();
+        b = b.listBuyerDetails(argBuyer);
+        System.out.println(b.toString());
         break;
-      case 2: 
+      case 2:
         System.out.println("Would you like to update your password?");
         System.out.println("Select Y or N");
         char op = opt.next().charAt(0);
@@ -122,20 +123,22 @@ public class BuyerUtil {
             }
             break;
           case 'N':
-          case 'n': System.out.println("Thank you! Taking you back to the menu now!");
+          case 'n':
+            System.out.println("Thank you! Taking you back to the menu now!");
             break;
-          default: System.out.println("Sorry! Wrong choice!");
+          default:
+            System.out.println("Sorry! Wrong choice!");
             break;
         }
         break;
-      default: 
+      default:
         System.out.println("Please choose again");
         showBuyerDetails(argBuyer);
         break;
     }
   }
 
-  private void checkBalance(final int argBuyer) {
+  // private void checkBalance(final int argBuyer) {
 
-  }
+  // }
 }
