@@ -23,7 +23,7 @@ public class Orders {
    * supplierId for supplier id.
    */
   private int supplierId;
-  
+
   /**
    * itemId to store item id.
    */
@@ -76,10 +76,10 @@ public class Orders {
 
   /**
    *
-   * @return customerId.
+   * @return buyerId.
    */
-  public final int getCustomerId() {
-    return this.customerId;
+  public final int getBuyerId() {
+    return this.buyerId;
   }
 
   /**
@@ -105,22 +105,6 @@ public class Orders {
   public final void setSupplierId(final int argSupplierId) {
     this.supplierId = argSupplierId;
   }
-
-  // /**
-  //  *
-  //  * @return itemsList array.
-  //  */
-  // public final int[] getItemsList() {
-  //   return this.itemsList;
-  // }
-
-  // /**
-  //  *
-  //  * @param argItems to set items into itemsList array.
-  //  */
-  // public final void setItemsList(final int[] argItems) {
-  //   this.itemsList = argItems;
-  // }
 
   /**
    *
@@ -268,6 +252,10 @@ public class Orders {
         + " ]";
   }
 
+  /**
+   * method to retrieve order details for a particular order.
+   * @param argOrderId for orderId.
+   */
   public void retrieveOrderDetails(final int argOrderId) {
 
   }

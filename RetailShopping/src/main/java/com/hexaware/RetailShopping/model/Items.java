@@ -193,19 +193,19 @@ public class Items {
         + " ]";
   }
 
-  public void addNewItem(final int argSupplierId) {
+  // public void addNewItem(final int argSupplierId) {
 
-  }
+  // }
 
-  public void updateExistingItem(final int argItemId, final double argPrice) {
+  // public void updateExistingItem(final int argItemId, final double argPrice) {
 
-  }
+  // }
 
-  public void listAllItems() {
+  // public void listAllItems() {
 
-  }
+  // }
 
-  public void retrieveItemDetails(final int argItemId) {
+  // public void retrieveItemDetails(final int argItemId) {
 
-  }
+  // }
 }

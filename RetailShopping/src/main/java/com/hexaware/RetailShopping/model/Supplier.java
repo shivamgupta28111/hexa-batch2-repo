@@ -183,15 +183,15 @@ public class Supplier {
         + " ]";
   }
 
-  public void retrievePendingOrders(final int argSupplierId) {
-    //get list of pending orders for supplier
-  }
+  // public void retrievePendingOrders(final int argSupplierId) {
+  //   //get list of pending orders for supplier
+  // }
 
-  public void acceptDenyOrder(final int argOrderId, final String argOrderStat) {
-    //change status of order based on orderid
-  }
+  // public void acceptDenyOrder(final int argOrderId, final String argOrderStat) {
+  //   //change status of order based on orderid
+  // }
 
-  public void supplierOrderHistory(final int argSupplierId) {
-    //get list of all orders for a particular supplier
-  }
+  // public void supplierOrderHistory(final int argSupplierId) {
+  //   //get list of all orders for a particular supplier
+  // }
 }

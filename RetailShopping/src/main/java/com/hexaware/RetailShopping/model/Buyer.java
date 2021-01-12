@@ -207,11 +207,52 @@ public class Buyer {
         + " ]";
   }
 
-  public void buyerOrderHistory(final int argBuyerId) {
+  private Buyer[] createBuyerList() {
+    Buyer[] buyers = new Buyer[5];
 
+    buyers[0] = new Buyer(101, "Alex Jones", "Jaipur, Rajasthan, India", "alex.jones@abc.com",
+        "923842221", 4500.00);
+    buyers[1] = new Buyer(102, "Kavitha K", "Mumbai, Maharashtra, India", "kk@xyz.com",
+        "983773722", 4500.00);
+    buyers[2] = new Buyer(103, "Ravi L", "Guntur, AP, India", "ravi_l@xyz.com",
+        "999001002", 4500.00);
+    buyers[3] = new Buyer(104, "James W", "Delhi, Delhi, India", "jw123@xyz.com",
+        "7292929222", 4500.00);
+    buyers[4] = new Buyer(105, "Lavanya M", "Bangalore, Karnataka, India", "lav_m@abc.com",
+        "7288920021", 4500.00);
+
+    return buyers;
   }
 
-  public void updatePassword(final int argBuyerId, final String argNewPass) {
+  /**
+   * method to list a single buyer's details.
+   * @param argBuyerId for buyerId
+   * @return buyer object
+   */
+  public final Buyer listBuyerDetails(final int argBuyerId) {
+    Buyer[] buyerList = createBuyerList();
 
+    Buyer buyer = new Buyer();
+
+    for (int index = 0; index < buyerList.length; index++) {
+      if (buyerList[index].getBuyerId() == argBuyerId) {
+        buyer = buyerList[index];
+        break;
+      }
+    }
+    return buyer;
+  }
+
+  // public void buyerOrderHistory(final int argBuyerId) {
+
+  // }
+
+  /**
+   * method to update the password.
+   * @param argBuyerId for buyerId
+   * @param argNewPass for new password
+   */
+  public final void updatePassword(final int argBuyerId, final String argNewPass) {
+    System.out.println("Password updated");
   }
 }
