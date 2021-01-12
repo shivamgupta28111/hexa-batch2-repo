@@ -1,0 +1,10 @@
+com\hexaware\RetailShopping\model\Items.class
+com\hexaware\RetailShopping\model\Buyer.class
+com\hexaware\RetailShopping\util\CliMain.class
+com\hexaware\RetailShopping\model\Login.class
+com\hexaware\RetailShopping\model\OrderStatus.class
+com\hexaware\RetailShopping\util\BuyerUtil.class
+com\hexaware\RetailShopping\util\SupplierUtil.class
+com\hexaware\RetailShopping\model\UserType.class
+com\hexaware\RetailShopping\model\Orders.class
+com\hexaware\RetailShopping\model\Supplier.class

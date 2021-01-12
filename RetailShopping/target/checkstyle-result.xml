@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\Buyer.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\Items.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\Login.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\Orders.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\OrderStatus.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\Supplier.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\model\UserType.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\util\BuyerUtil.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\util\CliMain.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\util\SupplierUtil.java">
+</file>
+</checkstyle>
