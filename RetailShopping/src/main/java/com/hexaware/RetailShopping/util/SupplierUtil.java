@@ -2,7 +2,7 @@ package com.hexaware.RetailShopping.util;
 
 import java.util.Scanner;
 
-//import com.hexaware.RetailShopping.model.Supplier;
+import com.hexaware.RetailShopping.model.Supplier;
 
 /**
  * Supplier Utility class.
@@ -59,29 +59,23 @@ public class SupplierUtil {
     System.out.print("Email: ");
     String emailAdd = option.next();
 
-    System.out.print("Username: ");
-    String username = option.next();
-
-    System.out.print("Password: ");
-    String pass = option.next();
-
     System.out.println("======================================================");
     System.out.println("Please Confirm: ");
     System.out.println("Name: " + supName);
     System.out.println("Address: " + supAddress);
     System.out.println("Phone: " + phone);
     System.out.println("Email " + emailAdd);
-    System.out.println("UserName: " + username);
-    System.out.println("Password: " + pass);
 
     System.out.println("Is the information correct? Y or N");
     char ch = option.next().charAt(0);
     if (ch == 'Y' || ch == 'y') {
-      System.out.println("Successfully Registered!");
-      supplierMenu();
+      Supplier s = new Supplier();
+      String msg = s.registerSupplier(supName, supAddress, phone, emailAdd);
+      System.out.println(msg); 
     } else {
-      registerSupplier();
+      System.out.println("Sorry! Registration Failed. Please try again");
     }
+    supplierMenu();
   }
 
   /**
@@ -95,7 +89,11 @@ public class SupplierUtil {
     String password = option.next();
 
     if (username.equals("test") && password.equals("test123")) {
+      int supId = 0;
       int ch = 0;
+
+      Supplier s = new Supplier();
+
       do {
         System.out.println("====Welcome====");
         System.out.println("1. Personal Details");
@@ -107,7 +105,8 @@ public class SupplierUtil {
         ch = option.nextInt();
 
         switch (ch) {
-          case 1: System.out.println("Under construction");
+          case 1: //System.out.println("Under construction");
+            s.listSupplierDetails(supId);
             break;
           case 2: System.out.println("available soon");
             break;

@@ -27,7 +27,9 @@ public class BuyerUtil {
         break;
       case 2: buyerSignIn();
         break;
-      case 3: Runtime.getRuntime().halt(0);
+      case 3:
+        System.out.println("Thank You For Shopping With Us. See You Again Soon!"); 
+        Runtime.getRuntime().halt(0);
       default:
         System.out.println("Please choose either 1, 2 or 3");
         buyerMenu();
@@ -38,7 +40,47 @@ public class BuyerUtil {
    * method to register a buyer.
    */
   private void registerBuyer() {
-    System.out.println("To be completed");
+    System.out.println("Please Enter Your Details");
+    System.out.println("==========================");
+    System.out.println();
+
+    System.out.println("Please enter First Name: ");
+    String fName = opt.next();
+    System.out.println("Please enter Last Name: ");
+    String lName = opt.next();
+    String buyerName = fName + " " + lName;
+
+    System.out.println("City:");
+    String city = opt.next();
+    System.out.println("State: ");
+    String state = opt.next();
+    System.out.println("Country:");
+    String country = opt.next();
+    String address =  city + ", " + state + ", " + country;
+
+    System.out.println("Contact Number: ");
+    String phone = opt.next();
+    System.out.println("Email: ");
+    String email = opt.next();
+
+    System.out.println("======================================================");
+    System.out.println("Please Confirm: ");
+    System.out.println("Name: " + buyerName);
+    System.out.println("Address: " + address);
+    System.out.println("Phone: " + phone);
+    System.out.println("Email " + email);
+
+    System.out.println("Is the information correct? Y or N");
+    char ch = option.next().charAt(0);
+
+    if (ch == 'Y' || ch == 'y') {
+      Buyer b = new Buyer();
+      String msg = b.registerNewBuyer(buyerName, address, phone, email);
+      System.out.println(msg);
+    } else {
+      System.out.println("Unable to register. Please try again.");
+    }
+    buyerMenu();
   }
 
   /**
@@ -71,7 +113,7 @@ public class BuyerUtil {
             break;
           case 3: //orderHistory(currentBuyer);
             break;
-          case 4: //checkBalance(currentBuyer);
+          case 4: checkBalance(currentBuyer);
             break;
           case 5: Runtime.getRuntime().halt(0);
           default: System.out.println("Choose from 1, 2 ,3 and 4 only");
@@ -138,7 +180,9 @@ public class BuyerUtil {
     }
   }
 
-  // private void checkBalance(final int argBuyer) {
-
-  // }
+  private void checkBalance(final int argBuyer) {
+    Buyer b = new Buyer();
+    b = b.listBuyerDetails(argBuyer);
+    System.out.println("Current Balance: " + b.getWalletBalance());
+  }
 }
