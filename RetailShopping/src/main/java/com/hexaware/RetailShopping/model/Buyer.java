@@ -255,4 +255,19 @@ public class Buyer {
   public final void updatePassword(final int argBuyerId, final String argNewPass) {
     System.out.println("Password updated");
   }
+
+  /**
+   * to register a new buyer.
+   * @param argBuyerName for name
+   * @param argAddr for address
+   * @param argPhone for phone
+   * @param argEmail for email
+   * @return string
+   */
+  public final String registerNewBuyer(final String argBuyerName, final String argAddr,
+      final String argPhone, final String argEmail) {
+    System.out.println("You have been registered Successfully");
+    String str = "Please signin to continue";
+    return str;
+  }
 }

@@ -194,4 +194,29 @@ public class Supplier {
   // public void supplierOrderHistory(final int argSupplierId) {
   //   //get list of all orders for a particular supplier
   // }
+
+  /**
+   * to register a new supplier.
+   * @param argSupplierName for supplier name
+   * @param argAddress for address
+   * @param argPhone for phone
+   * @param argEmail for email
+   * @return string
+   */
+  public final String registerSupplier(final String argSupplierName, final String argAddress,
+      final String argPhone, final String argEmail) {
+    System.out.println("Registration Successful");
+    String str = "Please login to continue";
+    return str;
+  }
+
+  /**
+   * to retrieve a particular supplier's details.
+   * @param argSupplierId for supplierId
+   * @return supplier object
+   */
+  public final Supplier listSupplierDetails(final int argSupplierId) {
+    Supplier s = new Supplier();
+    return s;
+  }
 }
