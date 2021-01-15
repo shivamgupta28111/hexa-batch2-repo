@@ -1,0 +1,35 @@
+Vendor.java
+1. Add new vendor
+2. update vendor details
+3. list all vendors
+4. list vendor details
+5. list pending orders
+6. accept or deny order
+7. list all orders
+
+Customer.java
+1. add new customer
+2. update customer
+3. list all customers
+4. list customer details
+5. check wallet balance
+6. order history
+
+Menu.java
+1. list all items
+2. add a new food item
+3. list food item details
+4. update food item
+5. Search categories
+
+Orders.java
+1. add new order
+2. list all orders
+3. list order details
+4. decrement wallet amount
+5. increment wallet amount
+
+Login.java / User.java
+1. list all users
+2. update user
+3. add user
