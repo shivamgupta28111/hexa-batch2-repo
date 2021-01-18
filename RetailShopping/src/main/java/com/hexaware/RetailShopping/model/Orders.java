@@ -255,8 +255,20 @@ public class Orders {
   /**
    * method to retrieve order details for a particular order.
    * @param argOrderId for orderId.
+   * @return Orders object
    */
-  public void retrieveOrderDetails(final int argOrderId) {
+  public final Orders retrieveOrderDetails(final int argOrderId) {
+    Orders order = new Orders();
+    return order;
+  }
 
+  /**
+   * retrieve orderhistory for a particular buyer.
+   * @param argBuyerId for buyerId
+   * @return orders array
+   */
+  public final Orders[] orderHistory(final int argBuyerId) {
+    Orders[] orderList = new Orders[5];
+    return orderList;
   }
 }
