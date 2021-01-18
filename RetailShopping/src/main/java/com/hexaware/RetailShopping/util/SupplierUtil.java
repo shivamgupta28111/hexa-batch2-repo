@@ -3,6 +3,7 @@ package com.hexaware.RetailShopping.util;
 import java.util.Scanner;
 
 import com.hexaware.RetailShopping.model.Supplier;
+import com.hexaware.RetailShopping.model.Items;
 
 /**
  * Supplier Utility class.
@@ -71,7 +72,7 @@ public class SupplierUtil {
     if (ch == 'Y' || ch == 'y') {
       Supplier s = new Supplier();
       String msg = s.registerSupplier(supName, supAddress, phone, emailAdd);
-      System.out.println(msg); 
+      System.out.println(msg);
     } else {
       System.out.println("Sorry! Registration Failed. Please try again");
     }
@@ -108,7 +109,7 @@ public class SupplierUtil {
           case 1: //System.out.println("Under construction");
             s.listSupplierDetails(supId);
             break;
-          case 2: System.out.println("available soon");
+          case 2: addItem(supId);
             break;
           case 3: System.out.println("Coming soon");
             break;
@@ -122,6 +123,21 @@ public class SupplierUtil {
     }
   }
 
+  private void addItem(final int supId) {
+    System.out.println("Please enter the item details: ");
+    System.out.println("Item Id");
+    int id = option.nextInt();
+    String name = option.next();
+    double price = option.nextDouble();
+    String cat = option.next();
+
+    Items item = new Items();
+
+    String msg = item.addNewItem(supId, id, price, name, cat);
+    System.out.println(msg);
+
+  }
+  
   private void checkOrders() {
     //get the supplier's id.
     //call the method to retrieve the pending orders for

@@ -1,6 +1,7 @@
 package com.hexaware.RetailShopping.util;
 
 import com.hexaware.RetailShopping.model.Buyer;
+import com.hexaware.RetailShopping.model.Items;
 
 import java.util.Scanner;
 
@@ -28,7 +29,7 @@ public class BuyerUtil {
       case 2: buyerSignIn();
         break;
       case 3:
-        System.out.println("Thank You For Shopping With Us. See You Again Soon!"); 
+        System.out.println("Thank You For Shopping With Us. See You Again Soon!");
         Runtime.getRuntime().halt(0);
       default:
         System.out.println("Please choose either 1, 2 or 3");
@@ -71,7 +72,7 @@ public class BuyerUtil {
     System.out.println("Email " + email);
 
     System.out.println("Is the information correct? Y or N");
-    char ch = option.next().charAt(0);
+    char ch = opt.next().charAt(0);
 
     if (ch == 'Y' || ch == 'y') {
       Buyer b = new Buyer();
@@ -109,7 +110,7 @@ public class BuyerUtil {
         switch (ch) {
           case 1: showBuyerDetails(currentBuyer);
             break;
-          case 2: //itemsMenu();
+          case 2: itemsMenu();
             break;
           case 3: //orderHistory(currentBuyer);
             break;
@@ -123,9 +124,31 @@ public class BuyerUtil {
     }
   }
 
-  // private void itemsMenu() {
+  private void itemsMenu() {
+    Items item = new Items();
+    Items[] items = item.listAllItems();
 
-  // }
+    for (Items i : items) {
+      //if (i != null) {
+      try {
+        System.out.println(i.toString());
+      } catch (NullPointerException e) {
+        System.out.println("Empty Object");
+      }
+
+    //  }
+    }
+
+    System.out.println("Select item you want to purchase: ITEM ID Please:");
+    int id = opt.nextInt();
+
+    item = item.listItemDetails(id);
+    if (item == null) {
+      System.out.println("Wrong id. Please try again!");
+    } else {
+      System.out.println(item.toString());
+    }
+  }
 
   // private void orderHistory(final int argBuyer) {
 
