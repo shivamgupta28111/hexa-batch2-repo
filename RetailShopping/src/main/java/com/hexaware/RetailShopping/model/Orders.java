@@ -251,14 +251,4 @@ public class Orders {
         + " Order Status: " + this.orderStatus
         + " ]";
   }
-
-  /**
-   * method to retrieve order details for a particular order.
-   * @param argOrderId for orderId.
-   * @return Orders object
-   */
-  public final Orders retrieveOrderDetails(final int argOrderId) {
-    Orders order = new Orders();
-    return order;
-  }
 }

@@ -52,19 +52,13 @@ public class BuyerFactory {
    * @param argPhone for phone
    * @param argEmail for email
    * @param argWallet for wallet
-   * @return String msg
+   * @return int res
    */
-  public static String registerBuyer(final int argBuyerId, final String argBuyerName, final String argAddress,
+  public static int registerBuyer(final int argBuyerId, final String argBuyerName, final String argAddress,
       final String argPhone, final String argEmail, final double argWallet) {
     int res = dao().registerBuyer(argBuyerId, argBuyerName, argAddress,
         argPhone, argEmail, argWallet);
-    String msg = "Registration Unsuccessful. Please try again!";
-
-    if (res > 0) {
-      msg = "You have been registered successfully!";
-    }
-
-    return msg;
+    return res;
   }
 
   /**
@@ -76,6 +70,26 @@ public class BuyerFactory {
    */
   public static String updateWalletBalance(final int argBuyerId, final double currentBalance, final double orderAmount) {
     dao().decrementBalance(currentBalance, orderAmount, argBuyerId);
-    return "Wallet Updated!";
+    return "Order Placed. Wallet Updated!";
+  }
+
+  /**
+   * to increment wallet balance.
+   * @param argBuyerId for buyer id
+   * @param currentBalance for current balance
+   * @param orderAmount for order amount
+   * @return string
+   */
+  public static String incrementOnOrderDenied(final int argBuyerId, final double currentBalance, final double orderAmount) {
+    dao().incrementBalance(currentBalance, orderAmount, argBuyerId);
+    return "Order Denied. Wallet Updated!";
+  }
+  /**
+   * to get the last row.
+   * @return buyer object
+   */
+  public static Buyer findLastRow() {
+    Buyer b = dao().findLastRow();
+    return b;
   }
 }

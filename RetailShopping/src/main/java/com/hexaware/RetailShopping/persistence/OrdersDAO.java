@@ -37,7 +37,7 @@ public interface OrdersDAO {
    */
   @SqlQuery("SELECT * FROM ORDERS WHERE BUYERID = :buyerId")
   @Mapper(OrdersMapper.class)
-  List<Orders> showAllBuyerOrders(@Bind("BUYERID") final int buyerId);
+  List<Orders> showAllBuyerOrders(@Bind("buyerId") final int buyerId);
 
   /**
    * query to insert a new order.
@@ -50,7 +50,8 @@ public interface OrdersDAO {
    * @param orderStatus for status
    * @return int
    */
-  @SqlUpdate("INSERT INTO ORDERS VALUES (:orderId, :orderDate, :buyerId, :supplierId, :itemId, :itemQty, :orderStatus)")
+  @SqlUpdate("INSERT INTO ORDERS (ORDERID, ORDERDATE, BUYERID, SUPPLIERID, ITEMID, ITEMQTY, ORDERSTATUS) VALUES "
+      + "(:orderId, :orderDate, :buyerId, :supplierId, :itemId, :itemQty, :orderStatus)")
   int newOrder(@Bind("orderId") final int orderId, @Bind("orderDate") final Date orderDate,
       @Bind("buyerId") final int buyerId, @Bind("supplierId") final int supplierId, @Bind("itemId") final int itemId,
       @Bind("itemQty") final int itemQty, @Bind("orderStatus") final String orderStatus);
@@ -59,10 +60,9 @@ public interface OrdersDAO {
    * query to update orderAmount.
    * @param orderId for order id
    * @param orderAmt for orderamount
-   * @return int
    */
   @SqlUpdate("UPDATE ORDERS SET ORDERAMOUNT = :orderAmt WHERE ORDERID = :orderId")
-  int updateOrder(@Bind("orderAmt") final double orderAmt, @Bind("orderId") final int orderId);
+  void updateOrder(@Bind("orderAmt") final double orderAmt, @Bind("orderId") final int orderId);
 
   /**
    * query to get the pending orders.
@@ -90,4 +90,20 @@ public interface OrdersDAO {
   @SqlQuery("SELECT * FROM ORDERS WHERE SUPPLIERID = :supplier")
   @Mapper(OrdersMapper.class)
   List<Orders> listAllSupplierOrders(@Bind("supplier") final int supplier);
+
+  /**
+   * to find the last order id.
+   * @return orders object
+   */
+  @SqlQuery("SELECT * FROM ORDERS WHERE ORDERID = (SELECT MAX(ORDERID) FROM ORDERS)")
+  @Mapper(OrdersMapper.class)
+  Orders findLastRow();
+
+  /**
+   * to get the order amount.
+   * @param orderId for order id
+   * @return order amount
+   */
+  @SqlQuery("SELECT ORDERAMOUNT FROM ORDERS WHERE ORDERID = :orderId")
+  double retrieveOrderAmount(@Bind("orderId") final int orderId);
 }

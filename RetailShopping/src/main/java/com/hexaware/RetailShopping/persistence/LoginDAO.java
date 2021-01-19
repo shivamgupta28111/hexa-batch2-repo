@@ -21,12 +21,13 @@ public interface LoginDAO {
   List<Login> showAll();
 
   /**
-   * to get the userId for a particular username.
-   * @param userName for username
-   * @return the login id
+   * to update password.
+   * @param pass for password
+   * @param userId for user id
+   * @return int
    */
-  @SqlQuery("SELECT LOGINID FROM LOGIN WHERE USERNAME = :userName")
-  int getLoginId(@Bind("userName") String userName);
+  @SqlUpdate("UPDATE LOGIN SET PASSCODE = :pass WHERE LOGINID = :userId")
+  int updatePassword(@Bind("pass") final String pass, @Bind("userId") final int userId);
 
   /**
    * insert a new row.

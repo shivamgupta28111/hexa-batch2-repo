@@ -54,4 +54,22 @@ public interface BuyerDAO {
   @SqlUpdate("UPDATE BUYER SET WALLETBALANCE = :currentBalance - :orderAmount WHERE BUYERID = :buyerId")
   void decrementBalance(@Bind("currentBalance") double currentBalance,
       @Bind("orderAmount") double orderAmount, @Bind("buyerId") int buyerId);
+
+  /**
+   * to increment balance.
+   * @param currentBalance for current balance
+   * @param orderAmount for order amount
+   * @param buyerId for buyerId
+   */
+  @SqlUpdate("UPDATE BUYER SET WALLETBALANCE = :currentBalance + :orderAmount WHERE BUYERID = :buyerId")
+  void incrementBalance(@Bind("currentBalance") double currentBalance,
+      @Bind("orderAmount") double orderAmount, @Bind("buyerId") int buyerId);
+
+  /**
+   * to find the last supplier id.
+   * @return supplier object
+   */
+  @SqlQuery("SELECT * FROM BUYER WHERE BUYERID = (SELECT MAX(BUYERID) FROM BUYER)")
+  @Mapper(BuyerMapper.class)
+  Buyer findLastRow();
 }

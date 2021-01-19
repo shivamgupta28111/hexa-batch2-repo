@@ -57,4 +57,20 @@ public class LoginFactory {
     int res = dao().registerLogin(argLogin, user, pass, ut);
     return res;
   }
+
+  /**
+   * for updating password.
+   * @param argUserId for user id
+   * @param pass for new password
+   * @return string
+   */
+  public static String updatePassword(final int argUserId, final String pass) {
+    String msg = "Password Update Unsuccessful";
+
+    int res = dao().updatePassword(pass, argUserId);
+    if (res > 0) {
+      msg = "Password Updated Successfully";
+    }
+    return msg;
+  }
 }

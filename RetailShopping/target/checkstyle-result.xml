@@ -2,6 +2,8 @@
 <checkstyle version="6.11.2">
 <file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\factory\BuyerFactory.java">
 </file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\factory\ItemsFactory.java">
+</file>
 <file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\factory\LoginFactory.java">
 </file>
 <file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\factory\OrdersFactory.java">
@@ -27,6 +29,10 @@
 <file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\persistence\BuyerMapper.java">
 </file>
 <file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\persistence\DbConnection.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\persistence\ItemsDAO.java">
+</file>
+<file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\persistence\ItemsMapper.java">
 </file>
 <file name="E:\trainings\hexaware\Dec2020 - Feb2021\projects\sample_projects\RetailShopping\src\main\java\com\hexaware\RetailShopping\persistence\LoginDAO.java">
 </file>

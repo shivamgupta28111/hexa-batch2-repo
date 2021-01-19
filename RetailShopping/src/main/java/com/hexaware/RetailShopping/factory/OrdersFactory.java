@@ -37,6 +37,16 @@ public class OrdersFactory {
   }
 
   /**
+   * for details of a particular order.
+   * @param argOrderId for order id
+   * @return orders object
+   */
+  public static Orders showOrderDetails(final int argOrderId) {
+    Orders order = dao().showOrderDetails(argOrderId);
+    return order;
+  }
+
+  /**
    * return all pending orders.
    * @param argSupplierId for supplier id
    * @return pending orders array
@@ -44,23 +54,6 @@ public class OrdersFactory {
   public static Orders[] listPendingOrders(final int argSupplierId) {
     List<Orders> pendingList = dao().showAllPendingOrders(argSupplierId);
     return pendingList.toArray(new Orders[pendingList.size()]);
-  }
-
-  /**
-   * to update order amount for new order.
-   * @param argOrderId for orderid
-   * @param argOrderAmt for orderamt
-   * @return string
-   */
-  public static String updateOrderAmount(final int argOrderId, final double argOrderAmt) {
-    String msg = "Update unsuccessful";
-    int res = dao().updateOrder(argOrderAmt, argOrderId);
-
-    if (res > 0) {
-      msg = "Amount updated successfully";
-    }
-
-    return msg;
   }
 
   /**
@@ -112,5 +105,43 @@ public class OrdersFactory {
   public static Orders[] listAllSupplierOrders(final int argSupplier) {
     List<Orders> orderList = dao().listAllSupplierOrders(argSupplier);
     return orderList.toArray(new Orders[orderList.size()]);
+  }
+
+  /**
+   * to get the last order.
+   * @return orders object
+   */
+  public static Orders findLastRow() {
+    Orders o = dao().findLastRow();
+    return o;
+  }
+
+  /**
+   * list all orders for a particular buyer.
+   * @param argBuyer for buyer id
+   * @return list of orders
+   */
+  public static Orders[] listAllBuyeOrders(final int argBuyer) {
+    List<Orders> orders = dao().showAllBuyerOrders(argBuyer);
+    return orders.toArray(new Orders[orders.size()]);
+  }
+
+  /**
+   * to get the amount for a particular order.
+   * @param orderId for order id
+   * @return amt
+   */
+  public static double retrieveOrderAmount(final int orderId) {
+    double amt = dao().retrieveOrderAmount(orderId);
+    return amt;
+  }
+
+  /**
+   * to update order amount.
+   * @param orderId for order id
+   * @param amt for amount
+   */
+  public static void updateOrderAmount(final int orderId, final double amt) {
+    dao().updateOrder(amt, orderId);
   }
 }

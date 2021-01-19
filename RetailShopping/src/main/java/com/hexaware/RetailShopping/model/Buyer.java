@@ -2,6 +2,9 @@ package com.hexaware.RetailShopping.model;
 
 import java.util.Objects;
 
+import com.hexaware.RetailShopping.factory.BuyerFactory;
+import com.hexaware.RetailShopping.factory.LoginFactory;
+
 /**
  * Buyer class.
  */
@@ -207,22 +210,22 @@ public class Buyer {
         + " ]";
   }
 
-  private Buyer[] createBuyerList() {
-    Buyer[] buyers = new Buyer[5];
+  // private Buyer[] createBuyerList() {
+  //   Buyer[] buyers = new Buyer[5];
 
-    buyers[0] = new Buyer(101, "Alex Jones", "Jaipur, Rajasthan, India", "alex.jones@abc.com",
-        "923842221", 4500.00);
-    buyers[1] = new Buyer(102, "Kavitha K", "Mumbai, Maharashtra, India", "kk@xyz.com",
-        "983773722", 4500.00);
-    buyers[2] = new Buyer(103, "Ravi L", "Guntur, AP, India", "ravi_l@xyz.com",
-        "999001002", 4500.00);
-    buyers[3] = new Buyer(104, "James W", "Delhi, Delhi, India", "jw123@xyz.com",
-        "7292929222", 4500.00);
-    buyers[4] = new Buyer(105, "Lavanya M", "Bangalore, Karnataka, India", "lav_m@abc.com",
-        "7288920021", 4500.00);
+  //   buyers[0] = new Buyer(101, "Alex Jones", "Jaipur, Rajasthan, India", "alex.jones@abc.com",
+  //       "923842221", 4500.00);
+  //   buyers[1] = new Buyer(102, "Kavitha K", "Mumbai, Maharashtra, India", "kk@xyz.com",
+  //       "983773722", 4500.00);
+  //   buyers[2] = new Buyer(103, "Ravi L", "Guntur, AP, India", "ravi_l@xyz.com",
+  //       "999001002", 4500.00);
+  //   buyers[3] = new Buyer(104, "James W", "Delhi, Delhi, India", "jw123@xyz.com",
+  //       "7292929222", 4500.00);
+  //   buyers[4] = new Buyer(105, "Lavanya M", "Bangalore, Karnataka, India", "lav_m@abc.com",
+  //       "7288920021", 4500.00);
 
-    return buyers;
-  }
+  //   return buyers;
+  // }
 
   /**
    * method to list a single buyer's details.
@@ -230,17 +233,8 @@ public class Buyer {
    * @return buyer object
    */
   public final Buyer listBuyerDetails(final int argBuyerId) {
-    Buyer[] buyerList = createBuyerList();
-
-    Buyer buyer = new Buyer();
-
-    for (int index = 0; index < buyerList.length; index++) {
-      if (buyerList[index].getBuyerId() == argBuyerId) {
-        buyer = buyerList[index];
-        break;
-      }
-    }
-    return buyer;
+    Buyer b = BuyerFactory.findBuyer(argBuyerId);
+    return b;
   }
 
   /**
@@ -254,26 +248,33 @@ public class Buyer {
 
   /**
    * to register a new buyer.
-   * @param argBuyerName for name
+   * @param argBuyerName for buyer name
    * @param argAddr for address
    * @param argPhone for phone
    * @param argEmail for email
+   * @param user for username
+   * @param pass for password
+   * @param ut for usertype
    * @return string
    */
   public final String registerNewBuyer(final String argBuyerName, final String argAddr,
-      final String argPhone, final String argEmail) {
-    System.out.println("You have been registered Successfully");
-    String str = "Please signin to continue";
-    return str;
-  }
+      final String argPhone, final String argEmail, final String user,
+      final String pass, final String ut) {
+    double wallet = 450000.00;
+    String msg = "Registration Unsuccessful";
+    Buyer b = BuyerFactory.findLastRow();
 
-  /**
-   * retrieve orderhistory for a particular buyer.
-   * @param argBuyerId for buyerId
-   * @return orders array
-   */
-  public final Orders[] buyerOrderHistory(final int argBuyerId) {
-    Orders[] orderList = new Orders[5];
-    return orderList;
+    int id = 1001;
+    if (b != null) {
+      id = b.getBuyerId() + 1;
+    }
+    int res = BuyerFactory.registerBuyer(id, argBuyerName, argAddr, argPhone, argEmail, wallet);
+    if (res > 0) {
+      res = LoginFactory.registerLogin(id, user, pass, ut);
+      if (res > 0) {
+        msg = "Registration successful. Please Login to continue";
+      }
+    }
+    return msg;
   }
 }
