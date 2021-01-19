@@ -214,7 +214,7 @@ public class Items {
    * @param argCat for itemCategory
    * @return String
    */
-  public String addNewItem(final int argSupplierId, final int argItemId, final double argPrice,
+  public final String addNewItem(final int argSupplierId, final int argItemId, final double argPrice,
       final String argItemName, final String argCat) {
     items.add(new Items(argItemId, argItemName, argPrice, argSupplierId, argCat));
 

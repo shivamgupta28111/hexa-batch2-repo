@@ -2,6 +2,11 @@ package com.hexaware.RetailShopping.model;
 
 import java.util.Objects;
 
+import com.hexaware.RetailShopping.factory.LoginFactory;
+import com.hexaware.RetailShopping.factory.OrdersFactory;
+//import com.hexaware.RetailShopping.factory.SupplierFactory;
+import com.hexaware.RetailShopping.factory.SupplierFactory;
+
 /**
  * Supplier class.
  */
@@ -183,17 +188,15 @@ public class Supplier {
         + " ]";
   }
 
-  // public void retrievePendingOrders(final int argSupplierId) {
-  //   //get list of pending orders for supplier
-  // }
-
-  // public void acceptDenyOrder(final int argOrderId, final String argOrderStat) {
-  //   //change status of order based on orderid
-  // }
-
-  // public void supplierOrderHistory(final int argSupplierId) {
-  //   //get list of all orders for a particular supplier
-  // }
+  /**
+   * to get all the orders for a particular supplier.
+   * @param argSupplierId for supplier id
+   * @return orders list
+   */
+  public final Orders[] supplierOrderHistory(final int argSupplierId) {
+    Orders[] myList = OrdersFactory.listAllSupplierOrders(argSupplierId);
+    return myList;
+  }
 
   /**
    * to register a new supplier.
@@ -201,22 +204,50 @@ public class Supplier {
    * @param argAddress for address
    * @param argPhone for phone
    * @param argEmail for email
+   * @param user for username
+   * @param pass for password
+   * @param ut for usertype
    * @return string
    */
   public final String registerSupplier(final String argSupplierName, final String argAddress,
-      final String argPhone, final String argEmail) {
-    System.out.println("Registration Successful");
-    String str = "Please login to continue";
-    return str;
+      final String argPhone, final String argEmail, final String user,
+      final String pass, final String ut) {
+    Supplier s = SupplierFactory.findLastRow();
+    int argSupplierId = 2001;
+
+    if (s != null) {
+      argSupplierId = s.getSupplierId() + 1;
+    }
+
+    String msg = "Registration Unsuccessful. Please try again";
+    int res = SupplierFactory.registerSupplier(argSupplierId, argSupplierName, argAddress, argPhone, argEmail);
+    if (res > 0) {
+      res = LoginFactory.registerLogin(argSupplierId, user, pass, ut);
+      if (res > 0) {
+        msg = "Registration Successful. Please login to continue";
+      }
+    }
+    return msg;
   }
 
   /**
-   * to retrieve a particular supplier's details.
-   * @param argSupplierId for supplierId
-   * @return supplier object
+   * method to accept or deny order.
+   * @param argOrderId for order id
+   * @param stat for status
+   * @return string
    */
-  public final Supplier listSupplierDetails(final int argSupplierId) {
-    Supplier s = new Supplier();
-    return s;
+  public final String acceptDenyOrder(final int argOrderId, final String stat) {
+    String msg = OrdersFactory.updateOrderStatus(stat, argOrderId);
+    return msg;
+  }
+
+  /**
+   * method to list pending orders.
+   * @param argSupplier for supplier id
+   * @return orders array
+   */
+  public final Orders[] pendingOrders(final int argSupplier) {
+    Orders[] pendingList = OrdersFactory.listPendingOrders(argSupplier);
+    return pendingList;
   }
 }

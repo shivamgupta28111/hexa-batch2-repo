@@ -3,7 +3,13 @@ package com.hexaware.RetailShopping.util;
 import java.util.Scanner;
 
 import com.hexaware.RetailShopping.model.Supplier;
+import com.hexaware.RetailShopping.model.UserType;
+import com.hexaware.RetailShopping.factory.LoginFactory;
+import com.hexaware.RetailShopping.factory.SupplierFactory;
 import com.hexaware.RetailShopping.model.Items;
+import com.hexaware.RetailShopping.model.Login;
+import com.hexaware.RetailShopping.model.Orders;
+
 
 /**
  * Supplier Utility class.
@@ -15,7 +21,7 @@ public class SupplierUtil {
   /**
    * supplierMenu method.
    */
-  final void supplierMenu() {
+  public final void supplierMenu() {
     System.out.println("=================Welcome===============");
     System.out.println("-------------Supplier Menu-------------");
     System.out.println("1. Register");
@@ -60,6 +66,14 @@ public class SupplierUtil {
     System.out.print("Email: ");
     String emailAdd = option.next();
 
+    System.out.println("Username: ");
+    String username = option.next();
+
+    System.out.println("Password: ");
+    String pass = option.next();
+
+    String ut = UserType.BUYER.toString();
+
     System.out.println("======================================================");
     System.out.println("Please Confirm: ");
     System.out.println("Name: " + supName);
@@ -71,10 +85,10 @@ public class SupplierUtil {
     char ch = option.next().charAt(0);
     if (ch == 'Y' || ch == 'y') {
       Supplier s = new Supplier();
-      String msg = s.registerSupplier(supName, supAddress, phone, emailAdd);
+      String msg = s.registerSupplier(supName, supAddress, phone, emailAdd, username, pass, ut);
       System.out.println(msg);
     } else {
-      System.out.println("Sorry! Registration Failed. Please try again");
+      System.out.println("Please re - enter your information.");
     }
     supplierMenu();
   }
@@ -89,37 +103,61 @@ public class SupplierUtil {
     System.out.print("Password: ");
     String password = option.next();
 
-    if (username.equals("test") && password.equals("test123")) {
-      int supId = 0;
-      int ch = 0;
+    Login login = LoginFactory.getLoginDetails(username);
 
-      Supplier s = new Supplier();
+    if (login != null) {
+      UserType user = login.getUserType();
+      if (user.equals(UserType.SUPPLIER)) {
+        if (username.equals(login.getUserName()) && password.equals(login.getPassword())) {
+          int supId = login.getUserId();
+          int ch = 0;
 
-      do {
-        System.out.println("====Welcome====");
-        System.out.println("1. Personal Details");
-        System.out.println("2. Add a new Item");
-        System.out.println("3. Update an Item");
-        System.out.println("4. Check Orders");
-        System.out.println("5. Sign Out");
-        System.out.println("What would you like to do?");
-        ch = option.nextInt();
+          //Supplier s = new Supplier();
 
-        switch (ch) {
-          case 1: //System.out.println("Under construction");
-            s.listSupplierDetails(supId);
-            break;
-          case 2: addItem(supId);
-            break;
-          case 3: System.out.println("Coming soon");
-            break;
-          case 4: checkOrders();
-            break;
-          case 5: Runtime.getRuntime().halt(0);
-          default: System.out.println("Please choose from 1, 2 , 3 or 4");
-            break;
+          do {
+            System.out.println("====Welcome====");
+            System.out.println("1. Personal Details");
+            System.out.println("2. Add a new Item");
+            System.out.println("3. Update an Item");
+            System.out.println("4. Check Orders");
+            System.out.println("5. List All My Orders");
+            System.out.println("6. Sign Out");
+            System.out.println("What would you like to do?");
+            ch = option.nextInt();
+
+            switch (ch) {
+              case 1: //System.out.println("Under construction");
+                listSupplierDetails(supId);
+                break;
+              case 2: addItem(supId);
+                break;
+              case 3: System.out.println("Coming soon");
+                break;
+              case 4: checkOrders(supId);
+                break;
+              case 5: listMyOrders(supId);
+                break;
+              case 6: Runtime.getRuntime().halt(0);
+              default: System.out.println("Please choose from 1, 2 , 3 or 4");
+                break;
+            }
+          } while (ch > 0 && ch < 6);
         }
-      } while (ch > 0 && ch < 6);
+      } else {
+        System.out.println("You are in the Wrong Location. Please Login As a Buyer.");
+      }
+    } else {
+      System.out.println("Wrong Credentials. Please try again");
+    }
+  }
+
+  private void listSupplierDetails(final int supId) {
+    Supplier s = SupplierFactory.findDetails(supId);
+
+    if (s != null) {
+      System.out.println(s.toString());
+    } else {
+      System.out.println("Unable to retrieve details. Please check Id and try again");
     }
   }
 
@@ -137,12 +175,50 @@ public class SupplierUtil {
     System.out.println(msg);
 
   }
-  
-  private void checkOrders() {
-    //get the supplier's id.
-    //call the method to retrieve the pending orders for
-    //this supplier
-    //menu to list pending orders, get orderdetails of particular
-    //and accept or deny orders
+
+  private void checkOrders(final int supId) {
+    Supplier s = new Supplier();
+
+    Orders[] pending = s.pendingOrders(supId);
+
+    for (Orders o: pending) {
+      System.out.println(o.toString());
+      System.out.println("Press 1 to Accept Order. Press 2 to Deny Order:");
+      int ch = option.nextInt();
+
+      String stat = null;
+
+      switch (ch) {
+        case 1:
+          stat = "ACCEPTED";
+          break;
+        case 2:
+          stat = "DENIED";
+          break;
+        default:
+          stat = "PENDING";
+          break;
+      }
+      String msg = s.acceptDenyOrder(o.getOrderId(), stat);
+      System.out.println(msg);
+    }
+  }
+
+  /**
+   * method to list all the orders for a particular supplier.
+   * @param argSupplier for supplier id
+   */
+  private void listMyOrders(final int argSupplier) {
+    Supplier s = new Supplier();
+
+    Orders[] myOrders = s.supplierOrderHistory(argSupplier);
+
+    if (myOrders.length > 0) {
+      for (Orders o: myOrders) {
+        System.out.println(o.toString());
+      }
+    } else {
+      System.out.println("Sorry! We are unable to complete your request. Please try later");
+    }
   }
 }

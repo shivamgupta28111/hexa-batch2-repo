@@ -261,14 +261,4 @@ public class Orders {
     Orders order = new Orders();
     return order;
   }
-
-  /**
-   * retrieve orderhistory for a particular buyer.
-   * @param argBuyerId for buyerId
-   * @return orders array
-   */
-  public final Orders[] orderHistory(final int argBuyerId) {
-    Orders[] orderList = new Orders[5];
-    return orderList;
-  }
 }

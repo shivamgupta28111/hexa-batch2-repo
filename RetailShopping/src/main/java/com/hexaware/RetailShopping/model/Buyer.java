@@ -243,10 +243,6 @@ public class Buyer {
     return buyer;
   }
 
-  // public void buyerOrderHistory(final int argBuyerId) {
-
-  // }
-
   /**
    * method to update the password.
    * @param argBuyerId for buyerId
@@ -269,5 +265,15 @@ public class Buyer {
     System.out.println("You have been registered Successfully");
     String str = "Please signin to continue";
     return str;
+  }
+
+  /**
+   * retrieve orderhistory for a particular buyer.
+   * @param argBuyerId for buyerId
+   * @return orders array
+   */
+  public final Orders[] buyerOrderHistory(final int argBuyerId) {
+    Orders[] orderList = new Orders[5];
+    return orderList;
   }
 }
