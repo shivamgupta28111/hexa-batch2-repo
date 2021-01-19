@@ -7,6 +7,16 @@ username varchar(50) primary key,
 passcode varchar(100) not null,
 userType varchar(30) not null);
 
+insert into login values (2001, '2001', '2001', 'SUPPLIER'),
+(2002, '2002','2002','SUPPLIER'),
+(1001, '1001', '1001', 'BUYER'),
+(1002, '1002', '1002', 'BUYER'),
+(2003, '2003', '2003', 'SUPPLIER'),
+(1003, '1003', '1003', 'BUYER'),
+(2004, '2004', '2004', 'SUPPLIER');
+
+select * from login;
+
 create table BUYER (
   buyerId int primary key,
   buyerName varchar(50) not null,
@@ -40,6 +50,7 @@ alter table ORDERS add constraint foreign key (buyerId) references Buyer(buyerId
 alter table ORDERS add supplierId int not null;
 alter table ORDERS add constraint foreign key (supplierId) references Suppliers(supplierId);
 alter table ORDERS add feedback varchar(100);
+alter table ORDERS alter orderAmount set default 0.0;
 
 -- alter table ORDERS add Item1 int not null;
 -- alter table ORDERS add constraint foreign key (item1) references items(itemId);
@@ -53,7 +64,8 @@ desc ORDERS; -- see the structure of the table
 desc customer;
 
 INSERT INTO Buyer VALUES (1001, 'Pallavi Prasad', 'Basaveshwarnagar, Bangalore, Karnataka', '9845543403', 'pallaviprasad.0611@gmail.com', 4500.00);
-INSERT INTO Buyer (customerName, customerId, walletbalance, phone, address, emailaddress) VALUES ('Manjula Mahesh', 1002, 4500.00, '9843949433', 'Salem, Tamil Nadu', 'manjula.mahesh@gmail.com');
+INSERT INTO Buyer (buyerName, buyerId, walletbalance, phone, address, emailaddress) VALUES ('Manjula Mahesh', 1002, 4500.00, '9843949433', 'Salem, Tamil Nadu', 'manjula.mahesh@gmail.com');
+Insert into Buyer values (1003, 'Shwetha Gupta', 'Mumbai, Maharashtra, India', '9388277221', 'shwetha.gupta@abc.com', 4500.00);
 
 select * from Buyer;
 
@@ -84,10 +96,10 @@ alter table orders rename column itemId to item1;  -- rename a column
 
 -- 05-01-2021 -> insert, update etc.
 INSERT INTO SUPPLIERS VALUES 
-	(2001, 'Minecraft Ltd.', 'San Jose, California, USA', '0177778922', 'sales@minecraft.com', '2001', '2001'),
-    (2002, 'Inverta Ltd.', 'Bangalore, Karnataka, India', '8738832222', 'sales@inverta.in', '2002','2002'),
-    (2003, 'Stark Enterprises', 'London, UK', '4447770922', 'sales@starkenterprises.uk', '2003','2003');
-insert into suppliers values (2004, 'Mason & Co.', 'Hyderabad, TS, India', '8477373221','sales@mnc.com','2004','2004');
+	(2001, 'Minecraft Ltd.', 'San Jose, California, USA', '0177778922', 'sales@minecraft.com'),
+    (2002, 'Inverta Ltd.', 'Bangalore, Karnataka, India', '8738832222', 'sales@inverta.in'),
+    (2003, 'Stark Enterprises', 'London, UK', '4447770922', 'sales@starkenterprises.uk');
+insert into suppliers values (2004, 'Mason & Co.', 'Hyderabad, TS, India', '8477373221','sales@mnc.com');
 
 select * from items;
 select * from suppliers;
