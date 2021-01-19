@@ -1,5 +1,7 @@
 package com.hexaware.carsdemo.model;
 
+import com.hexaware.carsdemo.factory.CarsFactory;
+
 public class Cars {
   private int carId;
   private String carName;
@@ -37,5 +39,10 @@ public class Cars {
     this.carId = argCarId;
     this.carName = argCarName;
     this.price = argPrice;
+  }
+
+  public String addCar(final int argCarId, final String argCarName, final double argPrice) {
+    String msg = CarsFactory.addNewCar(argCarId, argCarName, argPrice);
+    return msg;
   }
 }
