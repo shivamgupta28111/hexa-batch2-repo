@@ -74,66 +74,134 @@
 
 package com.hexaware.mysampleproject.util;
 
-import com.hexaware.mysampleproject.collectionspack.CollectionsDemo;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.hexaware.mysampleproject.java8pack.ComparePerson;
+import com.hexaware.mysampleproject.java8pack.Person;
+import com.hexaware.mysampleproject.java8pack.TestInterface;
+
+public class CliMain {
+
+  public static void main(String[] args) {
+    List<Person> persons = new ArrayList<Person>();
+    persons.add(new Person("Kavya", 25));
+    persons.add(new Person("Kanchan", 24));
+    persons.add(new Person("Kumud", 22));
+    persons.add(new Person("Keshav", 21));
+    persons.add(new Person("Komal", 23));
+
+    //instance method referencing
+    ComparePerson cp = new ComparePerson();
+    Collections.sort(persons, cp::compareByAge);
+
+    System.out.println("Instance Method Referencing");
+    persons.stream()
+      .map(p -> p.getPersonAge())
+      .forEach(System.out::println);
+
+    System.out.println("====================================");
+    System.out.println();
+    //static method referencing
+    Collections.sort(persons, ComparePerson::compareByName);
+    System.out.println("Sorted List (Static Method Referencing): ");
+    
+    persons.stream()
+        .map(p -> p.getPersonName())
+        .forEach(System.out::println);
+    System.out.println("====================================");
+    System.out.println();
+    //constructor Referencing
+    TestInterface t = Person::new;
+    Person p = t.addPerson("Kyle", 20);
+    persons.add(p);
+  }
+}
+
+
+
+
+
+
+//import com.hexaware.mysampleproject.java8pack.Java8Demo;
+//import com.hexaware.mysampleproject.java8pack.TestInterface;
+
+//import com.hexaware.mysampleproject.collectionspack.CollectionsDemo;
+//import com.hexaware.mysampleproject.iostreampack.FileIODemo;
 
 //import java.util.InputMismatchException;
 // import java.util.Scanner;
 
 // import com.hexaware.mysampleproject.exceptionspack.ExceptionDemo;
 
-public class CliMain {
-  public static void main(String[] args) {
-    CollectionsDemo cd = new CollectionsDemo();
-    cd.listDemo();
+// public class CliMain {
+//   public static void main(String[] args) {
+//     Java8Demo jd = new Java8Demo();
+//     //jd.myMethod1();
+//     //jd.forEachExample();
+//     // int res = Java8Demo.multiply(12, 2);
+//     // System.out.println(res);
+//    // TestInterface.staticMethod();
+
+//     jd.timeApiExample();
+//     //CollectionsDemo cd = new CollectionsDemo();
+//     //cd.listDemo();
+//     //cd.stackDemo();
+//     //cd.qDemo();
+//     //cd.hashMapDemo();
+
+//     // FileIODemo fd = new FileIODemo();
+//     // //fd.writeToFile();
+//     // fd.readFromFile();
+
+//     // char ch = 'a';
+
+//     // //autoboxing
+//     // Character charObj = ch;
+
+//     // //unboxing
+//     // System.out.println(charObj.charValue());
+
+//     // int i = 10;
+//     // Integer intObj = new Integer(i);
+//     // System.out.println(intObj);
+
+
+//     // Scanner sc = new Scanner(System.in);
+//     // System.out.println("Enter 2 numbers: ");
+//     // int num1 = sc.nextInt();
+//     // int num2 = sc.nextInt();
+//     // int res = 0;
+
+//     // //String s = null; 
+//     // try{
+//     //   res = ExceptionDemo.divide(num1, num2);
+//     //   //System.out.println("String length: " + s.length());
+//     // } catch (ArithmeticException e) {
+//     //   System.out.println(e.getMessage());
+//     // }
+
+//     // System.out.println(res);
+//     // try {
+//     //   int num1 = sc.nextInt();
+//     //   int num2 = sc.nextInt();
+//     //   res = ExceptionDemo.divide(num1, num2);
+//     // } catch (ArithmeticException e) {
+//     //   System.out.println("Division by Zero is not allowed");
+//     // } catch (InputMismatchException e) {
+//     //   // e.printStackTrace();
+//     //   System.out.println(e.getMessage());
+//     // } catch (Exception e) {
+//     //   System.out.println(e.getMessage());
+//     // } finally {
+//     //   System.out.println("In finally");
+//     //   //sc.close();
+//     // }
     
-    
-    // char ch = 'a';
-
-    // //autoboxing
-    // Character charObj = ch;
-
-    // //unboxing
-    // System.out.println(charObj.charValue());
-
-    // int i = 10;
-    // Integer intObj = new Integer(i);
-    // System.out.println(intObj);
-
-
-    // Scanner sc = new Scanner(System.in);
-    // System.out.println("Enter 2 numbers: ");
-    // int num1 = sc.nextInt();
-    // int num2 = sc.nextInt();
-    // int res = 0;
-
-    // //String s = null; 
-    // try{
-    //   res = ExceptionDemo.divide(num1, num2);
-    //   //System.out.println("String length: " + s.length());
-    // } catch (ArithmeticException e) {
-    //   System.out.println(e.getMessage());
-    // }
-
-    // System.out.println(res);
-    // try {
-    //   int num1 = sc.nextInt();
-    //   int num2 = sc.nextInt();
-    //   res = ExceptionDemo.divide(num1, num2);
-    // } catch (ArithmeticException e) {
-    //   System.out.println("Division by Zero is not allowed");
-    // } catch (InputMismatchException e) {
-    //   // e.printStackTrace();
-    //   System.out.println(e.getMessage());
-    // } catch (Exception e) {
-    //   System.out.println(e.getMessage());
-    // } finally {
-    //   System.out.println("In finally");
-    //   //sc.close();
-    // }
-    
-   // System.out.println(res);
-  }
-}
+//    // System.out.println(res);
+//   }
+// }
 
 
 
