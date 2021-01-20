@@ -125,4 +125,16 @@ public class BuyerFactory {
     int res = dao().updateEmail(email, buyer);
     return res;
   }
+
+  /**
+   * add amount to the wallet.
+   * @param buyer for buyer id
+   * @param curBal for current balance
+   * @param newAmt for new amount
+   * @return int
+   */
+  public static int updateWalletAmount(final int buyer, final double curBal, final double newAmt) {
+    int res = dao().updateWalletAmount(curBal, newAmt, buyer);
+    return res;
+  }
 }
