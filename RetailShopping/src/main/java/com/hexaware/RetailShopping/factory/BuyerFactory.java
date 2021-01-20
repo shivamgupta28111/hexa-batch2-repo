@@ -92,4 +92,37 @@ public class BuyerFactory {
     Buyer b = dao().findLastRow();
     return b;
   }
+
+  /**
+   * update address.
+   * @param buyer for buyer id
+   * @param addr for address
+   * @return int
+   */
+  public static int updateAddress(final int buyer, final String addr) {
+    int res = dao().updateAddress(addr, buyer);
+    return res;
+  }
+
+   /**
+   * update phone.
+   * @param buyer for buyer id
+   * @param phone for phone
+   * @return int
+   */
+  public static int updatePhone(final int buyer, final String phone) {
+    int res = dao().updatePhone(phone, buyer);
+    return res;
+  }
+
+   /**
+   * update email.
+   * @param buyer for buyer id
+   * @param email for email
+   * @return int
+   */
+  public static int updateEmail(final int buyer, final String email) {
+    int res = dao().updateEmail(email, buyer);
+    return res;
+  }
 }
