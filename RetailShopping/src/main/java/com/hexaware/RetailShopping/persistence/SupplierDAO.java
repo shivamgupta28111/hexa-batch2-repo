@@ -58,7 +58,7 @@ public interface SupplierDAO {
    * @param supplierId for supplier id
    * @return int
    */
-  @SqlUpdate("UPDATE SUPPLIERS SET SUPPLIERADDRESS = :addr WHERE SUPPLIERID = : supplierId")
+  @SqlUpdate("UPDATE SUPPLIERS SET SUPPLIERADDRESS = :addr WHERE SUPPLIERID = :supplierId")
   int updateAddress(@Bind("addr") final String addr, @Bind("supplierId") final int supplierId);
 
   /**
@@ -67,7 +67,7 @@ public interface SupplierDAO {
    * @param supplierId for supplier id
    * @return int
    */
-  @SqlUpdate("UPDATE SUPPLIERS SET PHONENO = :phone WHERE SUPPLIERID = : supplierId")
+  @SqlUpdate("UPDATE SUPPLIERS SET PHONENO = :phone WHERE SUPPLIERID = :supplierId")
   int updatePhone(@Bind("phone") final String phone, @Bind("supplierId") final int supplierId);
 
   /**
@@ -76,6 +76,6 @@ public interface SupplierDAO {
    * @param supplierId for supplier id
    * @return int
    */
-  @SqlUpdate("UPDATE SUPPLIERS SET EMAILADD = :email WHERE SUPPLIERID = : supplierId")
+  @SqlUpdate("UPDATE SUPPLIERS SET EMAILADD = :email WHERE SUPPLIERID = :supplierId")
   int updateEmail(@Bind("email") final String email, @Bind("supplierId") final int supplierId);
 }

@@ -25,6 +25,6 @@ public class OrdersMapper implements ResultSetMapper<Orders> {
   public final Orders map(final int idx, final ResultSet rs, final StatementContext ctx) throws SQLException {
     OrderStatus stat = OrderStatus.valueOf(rs.getString("ORDERSTATUS"));
     return new Orders(rs.getInt("ORDERID"), rs.getDate("ORDERDATE"), rs.getInt("BUYERID"),
-        rs.getInt("SUPPLIERID"), rs.getInt("ITEMID"), rs.getInt("ITEMQUANTITY"), stat);
+        rs.getInt("SUPPLIERID"), rs.getInt("ITEMID"), rs.getInt("ITEMQTY"), stat);
   }
 }

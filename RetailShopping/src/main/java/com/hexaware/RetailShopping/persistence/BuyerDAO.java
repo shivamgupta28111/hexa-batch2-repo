@@ -72,4 +72,31 @@ public interface BuyerDAO {
   @SqlQuery("SELECT * FROM BUYER WHERE BUYERID = (SELECT MAX(BUYERID) FROM BUYER)")
   @Mapper(BuyerMapper.class)
   Buyer findLastRow();
+
+  /**
+   * update address.
+   * @param addr for address
+   * @param buyerId for buyer id
+   * @return int
+   */
+  @SqlUpdate("UPDATE BUYER SET ADDRESS = :addr WHERE BUYERID = :buyerId")
+  int updateAddress(@Bind("addr") final String addr, @Bind("buyerId") final int buyerId);
+
+  /**
+   * update phone.
+   * @param phone for phone
+   * @param buyerId for buyer id
+   * @return int
+   */
+  @SqlUpdate("UPDATE BUYER SET PHONE = :phone WHERE BUYERID = :buyerId")
+  int updatePhone(@Bind("phone") final String phone, @Bind("buyerId") final int buyerId);
+
+  /**
+   * update email.
+   * @param email for email address
+   * @param buyerId for buyer id
+   * @return int
+   */
+  @SqlUpdate("UPDATE BUYER SET EMAILADDRESS = :email WHERE BUYERID = :buyerId")
+  int updateEmail(@Bind("email") final String email, @Bind("buyerId") final int buyerId);
 }
