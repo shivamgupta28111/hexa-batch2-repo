@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 import com.hexaware.RetailShopping.model.Supplier;
 import com.hexaware.RetailShopping.model.UserType;
+import com.hexaware.RetailShopping.factory.BuyerFactory;
 import com.hexaware.RetailShopping.factory.ItemsFactory;
 import com.hexaware.RetailShopping.factory.LoginFactory;
 import com.hexaware.RetailShopping.factory.OrdersFactory;
 import com.hexaware.RetailShopping.factory.SupplierFactory;
+import com.hexaware.RetailShopping.model.Buyer;
 import com.hexaware.RetailShopping.model.Items;
 import com.hexaware.RetailShopping.model.Login;
 import com.hexaware.RetailShopping.model.Orders;
@@ -74,29 +76,37 @@ public class SupplierUtil {
     System.out.print("Password: ");
     String pass = option.next();
 
-    Login l = LoginFactory.getLoginDetails(username);
-    if (l == null) {
-      String ut = UserType.SUPPLIER.toString();
+    System.out.print("Confirm Password: ");
+    String confirm = option.next();
 
-      System.out.println("======================================================");
-      System.out.println("Please Confirm: ");
-      System.out.println("Name: " + supName);
-      System.out.println("Address: " + supAddress);
-      System.out.println("Phone: " + phone);
-      System.out.println("Email " + emailAdd);
+    if (pass.equals(confirm)) {
+      Login l = LoginFactory.getLoginDetails(username);
+      if (l == null) {
+        String ut = UserType.SUPPLIER.toString();
 
-      System.out.println("Is the information correct? Y or N");
-      char ch = option.next().charAt(0);
-      if (ch == 'Y' || ch == 'y') {
-        Supplier s = new Supplier();
-        String msg = s.registerSupplier(supName, supAddress, phone, emailAdd, username, pass, ut);
-        System.out.println(msg);
+        System.out.println("======================================================");
+        System.out.println("Please Confirm: ");
+        System.out.println("Name: " + supName);
+        System.out.println("Address: " + supAddress);
+        System.out.println("Phone: " + phone);
+        System.out.println("Email " + emailAdd);
+
+        System.out.println("Is the information correct? Y or N");
+        char ch = option.next().charAt(0);
+        if (ch == 'Y' || ch == 'y') {
+          Supplier s = new Supplier();
+          String msg = s.registerSupplier(supName, supAddress, phone, emailAdd, username, pass, ut);
+          System.out.println(msg);
+        } else {
+          System.out.println("Please re - enter your information.");
+        }
+        supplierMenu();
       } else {
-        System.out.println("Please re - enter your information.");
+        System.out.println("Username already exists. Please try again");
+        registerSupplier();
       }
-      supplierMenu();
     } else {
-      System.out.println("Username already exists. Please try again");
+      System.out.println("Password Mismatch. Enter your details again please");
       registerSupplier();
     }
   }
@@ -123,32 +133,7 @@ public class SupplierUtil {
           //Supplier s = new Supplier();
 
           do {
-            System.out.println("====Welcome====");
-            System.out.println("1. Personal Details");
-            System.out.println("2. Add a new Item");
-            System.out.println("3. Update an Item");
-            System.out.println("4. My Orders");
-            System.out.println("5. Sign Out");
-            System.out.println("What would you like to do?");
-            ch = option.nextInt();
-
-            switch (ch) {
-              case 1: //System.out.println("Under construction");
-                listSupplierDetails(supId);
-                break;
-              case 2:
-                addItem(supId);
-                break;
-              case 3:
-                updateItemDetails(supId);
-                break;
-              case 4:
-                checkOrders(supId);
-                break;
-              case 5: Runtime.getRuntime().halt(0);
-              default: System.out.println("Please choose from the menu options");
-                break;
-            }
+            ch = supplierSubMenu(supId);
           } while (ch > 0 && ch < 6);
         }
       } else {
@@ -159,9 +144,39 @@ public class SupplierUtil {
     }
   }
 
+  private int supplierSubMenu(final int supId) {
+    System.out.println("====Welcome====");
+    System.out.println("1. Personal Details");
+    System.out.println("2. Add a new Item");
+    System.out.println("3. Update an Item");
+    System.out.println("4. My Orders");
+    System.out.println("5. Sign Out");
+    System.out.println("What would you like to do?");
+    int ch = option.nextInt();
+
+    switch (ch) {
+      case 1: //System.out.println("Under construction");
+        listSupplierDetails(supId);
+        break;
+      case 2:
+        addItem(supId);
+        break;
+      case 3:
+        updateItemDetails(supId);
+        break;
+      case 4:
+        checkOrders(supId);
+        break;
+      case 5: Runtime.getRuntime().halt(0);
+      default: System.out.println("Please choose from the menu options");
+        break;
+    }
+    return ch;
+  }
   private void listSupplierDetails(final int supId) {
     System.out.println("1. Display Details");
     System.out.println("2. Update Details");
+    System.out.println("3. Return to Previous Menu");
     System.out.println("Your option?");
     int ch = option.nextInt();
 
@@ -180,6 +195,7 @@ public class SupplierUtil {
       case 2:
         System.out.println("1. Update Password");
         System.out.println("2. Update Personal Details");
+        System.out.println("3. Return to Previous Menu");
         System.out.println("Enter your option: ");
         int op = option.nextInt();
 
@@ -195,7 +211,6 @@ public class SupplierUtil {
               System.out.println(msg);
             } else {
               System.out.println("Passwords don't match. Please try again!");
-              //listSupplierDetails(supId);
             }
             break;
           case 2:
@@ -211,7 +226,7 @@ public class SupplierUtil {
         }
       default:
         //System.out.println("Please choose again");
-        //listSupplierDetails(supId);
+        supplierSubMenu(supId);
         break;
     }
   }
@@ -220,6 +235,7 @@ public class SupplierUtil {
     System.out.println("1. Update Address");
     System.out.println("2. Update Phone");
     System.out.println("3. Update Email");
+    System.out.println("4. Return to Previous Menu");
     int op = option.nextInt();
     int res = 0;
     String msg = null;
@@ -328,7 +344,12 @@ public class SupplierUtil {
         int ordId = option.nextInt();
         Orders o = OrdersFactory.showOrderDetails(ordId);
         if (o != null) {
-          System.out.println(o.toString());
+          double amt = OrdersFactory.retrieveOrderAmount(o.getOrderId());
+          Buyer b = BuyerFactory.findBuyer(o.getBuyerId());
+          Items i = ItemsFactory.listItemDetails(o.getItemId());
+          System.out.println("Order Id: " + o.getOrderId() + " | Order Date: " + o.getOrderDate()
+              + " | Order Amount: " + amt + " | Buyer: " + b.getBuyerName()
+              + " | Item: " + i.getItemName() + " | Item Quantity: " + o.getItemQuantity());
         } else {
           System.out.println("Wrong Id. Please try again");
         }
@@ -350,7 +371,12 @@ public class SupplierUtil {
 
     if (myOrders.length > 0) {
       for (Orders o: myOrders) {
-        System.out.println(o.toString());
+        double amt = OrdersFactory.retrieveOrderAmount(o.getOrderId());
+        Buyer b = BuyerFactory.findBuyer(o.getBuyerId());
+        Items i = ItemsFactory.listItemDetails(o.getItemId());
+        System.out.println("Order Id: " + o.getOrderId() + " | Order Date: " + o.getOrderDate()
+            + " | Order Amount: " + amt + " | Buyer: " + b.getBuyerName()
+            + " | Item: " + i.getItemName() + " | Item Quantity: " + o.getItemQuantity());
       }
     } else {
       System.out.println("Sorry! We are unable to complete your request. Please try later");

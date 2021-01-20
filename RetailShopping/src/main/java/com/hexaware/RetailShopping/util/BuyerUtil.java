@@ -5,9 +5,11 @@ import com.hexaware.RetailShopping.factory.BuyerFactory;
 import com.hexaware.RetailShopping.factory.ItemsFactory;
 import com.hexaware.RetailShopping.factory.LoginFactory;
 import com.hexaware.RetailShopping.factory.OrdersFactory;
+import com.hexaware.RetailShopping.factory.SupplierFactory;
 import com.hexaware.RetailShopping.model.Buyer;
 import com.hexaware.RetailShopping.model.Items;
 import com.hexaware.RetailShopping.model.Orders;
+import com.hexaware.RetailShopping.model.Supplier;
 import com.hexaware.RetailShopping.model.UserType;
 import com.hexaware.RetailShopping.model.Login;
 import com.hexaware.RetailShopping.model.OrderStatus;
@@ -82,30 +84,38 @@ public class BuyerUtil {
     String user = opt.next();
     System.out.print("Password: ");
     String pass = opt.next();
-    Login l = LoginFactory.getLoginDetails(user);
+    System.out.print("Confirm Password: ");
+    String confirm = opt.next();
 
-    if (l == null) {
-      System.out.println("======================================================");
-      System.out.println("Please Confirm: ");
-      System.out.println("Name: " + buyerName);
-      System.out.println("Address: " + address);
-      System.out.println("Phone: " + phone);
-      System.out.println("Email: " + email);
+    if (pass.equals(confirm)) {
+      Login l = LoginFactory.getLoginDetails(user);
 
-      System.out.println("Is the information correct? Y or N");
-      char ch = opt.next().charAt(0);
+      if (l == null) {
+        System.out.println("======================================================");
+        System.out.println("Please Confirm: ");
+        System.out.println("Name: " + buyerName);
+        System.out.println("Address: " + address);
+        System.out.println("Phone: " + phone);
+        System.out.println("Email: " + email);
 
-      if (ch == 'Y' || ch == 'y') {
-        Buyer b = new Buyer();
-        String ut = UserType.BUYER.toString();
-        String msg = b.registerNewBuyer(buyerName, address, phone, email, user, pass, ut);
-        System.out.println(msg);
+        System.out.println("Is the information correct? Y or N");
+        char ch = opt.next().charAt(0);
+
+        if (ch == 'Y' || ch == 'y') {
+          Buyer b = new Buyer();
+          String ut = UserType.BUYER.toString();
+          String msg = b.registerNewBuyer(buyerName, address, phone, email, user, pass, ut);
+          System.out.println(msg);
+        } else {
+          System.out.println("Unable to register. Please try again.");
+        }
+        buyerMenu();
       } else {
-        System.out.println("Unable to register. Please try again.");
+        System.out.println("Username already exists. Please Enter your details again.");
+        registerBuyer();
       }
-      buyerMenu();
     } else {
-      System.out.println("Username already exists. Please Enter your details again.");
+      System.out.println("Password Mismatch. Please re-enter details.");
       registerBuyer();
     }
   }
@@ -123,39 +133,13 @@ public class BuyerUtil {
     Login login = LoginFactory.getLoginDetails(user);
 
     if (login != null) {
-      int ch = 0;
       UserType ut = login.getUserType();
+      int ch = 0;
       if (ut.equals(UserType.BUYER)) {
         if (user.equals(login.getUserName()) && pass.equals(login.getPassword())) {
+          int currentBuyer = login.getUserId();
           do {
-            System.out.println("=======WELCOME========");
-            System.out.println("1. Personal Details");
-            System.out.println("2. Items Menu");
-            System.out.println("3. Order History");
-            System.out.println("4. Wallet Details");
-            System.out.println("5. Sign Out");
-            ch = opt.nextInt();
-
-            int currentBuyer = login.getUserId();
-            switch (ch) {
-              case 1:
-                showBuyerDetails(currentBuyer);
-                break;
-              case 2:
-                itemsMenu(currentBuyer);
-                break;
-              case 3:
-                orderHistory(currentBuyer);
-                break;
-              case 4:
-                checkBalance(currentBuyer);
-                break;
-              case 5:
-                Runtime.getRuntime().halt(0);
-              default:
-                System.out.println("Choose from 1, 2 ,3 and 4 only");
-                break;
-            }
+            ch = buyerSubMenu(currentBuyer);
           } while (ch > 0 && ch < 5);
         } else {
           System.out.println("Wrong credentials");
@@ -167,6 +151,37 @@ public class BuyerUtil {
       System.out.println("Please Register or Login with Correct Credentials");
       buyerMenu();
     }
+  }
+
+  private int buyerSubMenu(final int currentBuyer) {
+    System.out.println("=======WELCOME========");
+    System.out.println("1. Personal Details");
+    System.out.println("2. Items Menu");
+    System.out.println("3. Order History");
+    System.out.println("4. Wallet Details");
+    System.out.println("5. Sign Out");
+    int ch = opt.nextInt();
+
+    switch (ch) {
+      case 1:
+        showBuyerDetails(currentBuyer);
+        break;
+      case 2:
+        itemsMenu(currentBuyer);
+        break;
+      case 3:
+        orderHistory(currentBuyer);
+        break;
+      case 4:
+        checkBalance(currentBuyer);
+        break;
+      case 5:
+        Runtime.getRuntime().halt(0);
+      default:
+        System.out.println("Choose from 1, 2 ,3 and 4 only");
+        break;
+    }
+    return ch;
   }
 
   private void itemsMenu(final int currentBuyer) {
@@ -190,7 +205,7 @@ public class BuyerUtil {
       if (qty < 1) {
         qty = 1;
       }
-      
+
       Items item = ItemsFactory.listItemDetails(id);
 
       if (item != null) {
@@ -241,10 +256,12 @@ public class BuyerUtil {
     if (history.length > 0) {
       for (Orders o: history) {
         double amt = OrdersFactory.retrieveOrderAmount(o.getOrderId());
+        Supplier s = SupplierFactory.findDetails(o.getSupplierId());
+        Items i = ItemsFactory.listItemDetails(o.getItemId());
         System.out.println("Order Id: " + o.getOrderId() + " | Order Date: "
             + o.getOrderDate() + " | Order Amount: " + amt + " | Status: "
-            + o.getOrderStatus() + " | Supplier Id: " + o.getSupplierId()
-            + " | Item Id: " + o.getItemId() + " | Quantity: " + o.getItemQuantity());
+            + o.getOrderStatus() + " | Supplier : " + s.getSupplierName()
+            + " | Item Name: " + i.getItemName() + " | Quantity: " + o.getItemQuantity());
       }
     } else {
       System.out.println("Looks like you are new. Happy Shopping");
@@ -254,6 +271,7 @@ public class BuyerUtil {
   private void showBuyerDetails(final int argBuyer) {
     System.out.println("1. Display Details");
     System.out.println("2. Update Details");
+    System.out.println("3. Back to Previous Menu");
     System.out.println("Your option?");
     int ch = opt.nextInt();
 
@@ -261,11 +279,14 @@ public class BuyerUtil {
       case 1: //System.out.println("Fetching details soon");
         Buyer b = new Buyer();
         b = b.listBuyerDetails(argBuyer);
-        System.out.println(b.toString());
+        System.out.println("Name: " + b.getBuyerName() + " | Address: " + b.getAddr()
+            + " | Phone: " + b.getContact() + " | Email: " + b.getEmailAddr()
+            + " | Wallet: " + b.getWalletBalance());
         break;
       case 2:
         System.out.println("1. Update Password");
         System.out.println("2. Update Personal Details");
+        System.out.println("3. Back to Previous Menu");
         System.out.println("Enter your option: ");
         int op = opt.nextInt();
 
@@ -296,8 +317,8 @@ public class BuyerUtil {
         }
         break;
       default:
-        System.out.println("Please choose again");
-        showBuyerDetails(argBuyer);
+        //System.out.println("Please choose again");
+        buyerSubMenu(argBuyer);
         break;
     }
   }
@@ -306,6 +327,7 @@ public class BuyerUtil {
     System.out.println("1. Update Address");
     System.out.println("2. Update Phone");
     System.out.println("3. Update Email");
+    System.out.println("4. Return to Previous Menu");
     int op = opt.nextInt();
     int res = 0;
     String msg = null;
@@ -318,9 +340,9 @@ public class BuyerUtil {
         String state = opt.next();
         System.out.print("Country: ");
         String country = opt.next();
-        String supAddress = city + ", " + state + ", " + country;
+        String buyerAddress = city + ", " + state + ", " + country;
 
-        res = BuyerFactory.updateAddress(buyer, supAddress);
+        res = BuyerFactory.updateAddress(buyer, buyerAddress);
 
         msg = "Address Update Unsuccessful";
         if (res > 0) {
@@ -361,6 +383,19 @@ public class BuyerUtil {
 
     if (b != null) {
       System.out.println("Current Balance: " + b.getWalletBalance());
+      System.out.println();
+      System.out.println("Do you want to update your balance? Y or N");
+      char choice = opt.next().charAt(0);
+      if (choice == 'Y' || choice == 'y') {
+        String msg = "Sorry! Unable to update wallet amount";
+        System.out.print("Enter the amount you want to update:");
+        double amt = opt.nextDouble();
+        int res = BuyerFactory.updateWalletAmount(argBuyer, b.getWalletBalance(), amt);
+        if (res > 0) {
+          msg = "Wallet amount updated";
+        }
+        System.out.println(msg);
+      }
     } else {
       System.out.println("Sorry! Unable to process your request");
     }
