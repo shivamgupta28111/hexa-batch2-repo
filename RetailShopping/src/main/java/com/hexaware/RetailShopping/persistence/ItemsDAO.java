@@ -60,4 +60,13 @@ public interface ItemsDAO {
   @SqlQuery("SELECT * FROM ITEMS WHERE ITEMID = (SELECT MAX(ITEMID) FROM ITEMS)")
   @Mapper(ItemsMapper.class)
   Items findLastRow();
+
+  /**
+   * to list all items for a particular supplier.
+   * @param supId for supplier id
+   * @return list of items
+   */
+  @SqlQuery("SELECT * FROM ITEMS WHERE SUPPLIERID = :supId")
+  @Mapper(ItemsMapper.class)
+  List<Items> listSupplierItems(@Bind("supId") final int supId);
 }

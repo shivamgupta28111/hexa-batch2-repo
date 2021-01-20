@@ -51,4 +51,31 @@ public interface SupplierDAO {
   @SqlQuery("SELECT * FROM SUPPLIERS WHERE SUPPLIERID = (SELECT MAX(SUPPLIERID) FROM SUPPLIERS)")
   @Mapper(SupplierMapper.class)
   Supplier findLastRow();
+
+  /**
+   * update address.
+   * @param addr for address
+   * @param supplierId for supplier id
+   * @return int
+   */
+  @SqlUpdate("UPDATE SUPPLIERS SET SUPPLIERADDRESS = :addr WHERE SUPPLIERID = : supplierId")
+  int updateAddress(@Bind("addr") final String addr, @Bind("supplierId") final int supplierId);
+
+  /**
+   * update phone.
+   * @param phone for phone
+   * @param supplierId for supplier id
+   * @return int
+   */
+  @SqlUpdate("UPDATE SUPPLIERS SET PHONENO = :phone WHERE SUPPLIERID = : supplierId")
+  int updatePhone(@Bind("phone") final String phone, @Bind("supplierId") final int supplierId);
+
+  /**
+   * update email.
+   * @param email for email address
+   * @param supplierId for supplier id
+   * @return int
+   */
+  @SqlUpdate("UPDATE SUPPLIERS SET EMAILADD = :email WHERE SUPPLIERID = : supplierId")
+  int updateEmail(@Bind("email") final String email, @Bind("supplierId") final int supplierId);
 }

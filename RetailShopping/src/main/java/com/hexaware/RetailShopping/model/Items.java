@@ -12,9 +12,9 @@
  */
 package com.hexaware.RetailShopping.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
+
+import com.hexaware.RetailShopping.factory.ItemsFactory;
 
 /**
  * Items class.
@@ -45,15 +45,15 @@ public class Items {
    */
   private String itemCategory;
 
-  /**
-   * an array of items - temporary.
-   */
-  private Items[] itemsList = new Items[5];
+  // /**
+  //  * an array of items - temporary.
+  //  */
+  // private Items[] itemsList = new Items[5];
 
-  /**
-   * list of items - temporary.
-   */
-  private List<Items> items = new ArrayList<Items>();
+  // /**
+  //  * list of items - temporary.
+  //  */
+  // private List<Items> items = new ArrayList<Items>();
 
   /**
    *
@@ -208,54 +208,64 @@ public class Items {
   /**
    * to add a new item.
    * @param argSupplierId for supplierId
-   * @param argItemId for itemId
    * @param argPrice for price
    * @param argItemName for itemName
    * @param argCat for itemCategory
    * @return String
    */
-  public final String addNewItem(final int argSupplierId, final int argItemId, final double argPrice,
-      final String argItemName, final String argCat) {
-    items.add(new Items(argItemId, argItemName, argPrice, argSupplierId, argCat));
+  public final String addNewItem(final int argSupplierId, final double argPrice, final String argItemName,
+      final String argCat) {
+    Items item = ItemsFactory.findLastRow();
+    String msg = "Unable to add new item";
+    int id = 4001;
 
-    return "Item added Successfully";
+    if (item != null) {
+      id = item.getItemId() + 1;
+    }
+
+    int res = ItemsFactory.uploadItem(id, argItemName, argPrice, argCat, argSupplierId);
+    if (res > 0) {
+      msg = "New Item Uploaded Successfully";
+    }
+
+    return msg;
   }
 
   // public void updateExistingItem(final int argItemId, final double argPrice) {
 
   // }
 
-  private void createList() {
-    itemsList[0] = new Items(1001, "Lenovo Laptop", 56000.00, 10, "Laptops");
-    itemsList[1] = new Items(1002, "Mac Pro", 153000.00, 12, "Laptops");
-    itemsList[2] = new Items(1003, "One Plus", 93000.00, 12, "Phones");
-    itemsList[3] = new Items(1004, "Nokia 6550", 6000.00, 10, "Phones");
-  }
+  // private void createList() {
+  //   itemsList[0] = new Items(1001, "Lenovo Laptop", 56000.00, 10, "Laptops");
+  //   itemsList[1] = new Items(1002, "Mac Pro", 153000.00, 12, "Laptops");
+  //   itemsList[2] = new Items(1003, "One Plus", 93000.00, 12, "Phones");
+  //   itemsList[3] = new Items(1004, "Nokia 6550", 6000.00, 10, "Phones");
+  // }
 
-  /**
-   * list all items.
-   * @return items array
-   */
-  public final Items[] listAllItems() {
-    createList();
-    return itemsList;
-  }
+  // /**
+  //  * list all items.
+  //  * @return items array
+  //  */
+  // public final Items[] listAllItems() {
+  //   createList();
+  //   return itemsList;
+  // }
 
-  /**
-   * list a particular items details.
-   * @param argItemId for item id
-   * @return items object
-   */
-  public final Items listItemDetails(final int argItemId) {
-    Items it = new Items();
-    for (Items item: itemsList) {
-      if (item.itemId == argItemId) {
-        it = item;
-        break;
-      }
-    }
-    return it;
-  }
+  // /**
+  //  * list a particular items details.
+  //  * @param argItemId for item id
+  //  * @return items object
+  //  */
+  // public final Items listItemDetails(final int argItemId) {
+  //   Items it = new Items();
+  //   for (Items item: itemsList) {
+  //     if (item.itemId == argItemId) {
+  //       it = item;
+  //       break;
+  //     }
+  //   }
+  //   return it;
+  // }
   // public void retrieveItemDetails(final int argItemId) {
 
   // }

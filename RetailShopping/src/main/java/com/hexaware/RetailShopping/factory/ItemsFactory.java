@@ -68,17 +68,12 @@ public class ItemsFactory {
    * @param argPrice for item price
    * @param argItemCat for category
    * @param argSupplierId for supplierid
-   * @return String
+   * @return int
    */
-  public static String uploadItem(final int argItemId, final String argItemName, final double argPrice,
+  public static int uploadItem(final int argItemId, final String argItemName, final double argPrice,
       final String argItemCat, final int argSupplierId) {
-    String msg = "Unable to add new item";
-
     int res = dao().uploadNewItem(argItemId, argItemName, argPrice, argItemCat, argSupplierId);
-    if (res > 0) {
-      msg = "Uploaded new item successfully";
-    }
-    return msg;
+    return res;
   }
 
   /**
@@ -88,5 +83,15 @@ public class ItemsFactory {
   public static Items findLastRow() {
     Items item = dao().findLastRow();
     return item;
+  }
+
+  /**
+   * to get the list of items for a particular supplier.
+   * @param argSupplier for supplier id
+   * @return items array
+   */
+  public static Items[] retrieveItemsList(final int argSupplier) {
+    List<Items> items = dao().listSupplierItems(argSupplier);
+    return items.toArray(new Items[items.size()]);
   }
 }

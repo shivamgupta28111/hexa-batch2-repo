@@ -57,4 +57,37 @@ public class SupplierFactory {
     Supplier s = dao().findLastRow();
     return s;
   }
+
+  /**
+   * update address.
+   * @param argSupplier for supplier id
+   * @param addr for address
+   * @return int
+   */
+  public static int updateAddress(final int argSupplier, final String addr) {
+    int res = dao().updateAddress(addr, argSupplier);
+    return res;
+  }
+
+   /**
+   * update phone.
+   * @param argSupplier for supplier id
+   * @param phone for phone
+   * @return int
+   */
+  public static int updatePhone(final int argSupplier, final String phone) {
+    int res = dao().updatePhone(phone, argSupplier);
+    return res;
+  }
+
+   /**
+   * update email.
+   * @param argSupplier for supplier id
+   * @param email for email
+   * @return int
+   */
+  public static int updateEmail(final int argSupplier, final String email) {
+    int res = dao().updateEmail(email, argSupplier);
+    return res;
+  }
 }

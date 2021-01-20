@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.hexaware.RetailShopping.model.Supplier;
 import com.hexaware.RetailShopping.model.UserType;
+import com.hexaware.RetailShopping.factory.ItemsFactory;
 import com.hexaware.RetailShopping.factory.LoginFactory;
 import com.hexaware.RetailShopping.factory.OrdersFactory;
 import com.hexaware.RetailShopping.factory.SupplierFactory;
@@ -135,11 +136,14 @@ public class SupplierUtil {
               case 1: //System.out.println("Under construction");
                 listSupplierDetails(supId);
                 break;
-              case 2: addItem(supId);
+              case 2:
+                addItem(supId);
                 break;
-              case 3: System.out.println("Coming soon");
+              case 3:
+                updateItemDetails(supId);
                 break;
-              case 4: checkOrders(supId);
+              case 4:
+                checkOrders(supId);
                 break;
               case 5: Runtime.getRuntime().halt(0);
               default: System.out.println("Please choose from the menu options");
@@ -174,12 +178,13 @@ public class SupplierUtil {
         }
         break;
       case 2:
-        System.out.println("Would you like to update your password?");
-        System.out.println("Select Y or N");
-        char op = option.next().charAt(0);
+        System.out.println("1. Update Password");
+        System.out.println("2. Update Personal Details");
+        System.out.println("Enter your option: ");
+        int op = option.nextInt();
+
         switch (op) {
-          case 'Y':
-          case 'y':
+          case 1:
             System.out.println("Enter New Password: ");
             String newPass = option.next();
             System.out.println("Confirm New Password: ");
@@ -193,15 +198,17 @@ public class SupplierUtil {
               listSupplierDetails(supId);
             }
             break;
-          case 'N':
-          case 'n':
-            System.out.println("Thank you! Taking you back to the menu now!");
+          case 2:
+            updatePersonalDetails(supId);
+            System.out.println("Do you want to update any other details? Y or N");
+            char c = option.next().charAt(0);
+            if (c == 'Y' || c == 'y') {
+              updatePersonalDetails(supId);
+            }
             break;
           default:
-            System.out.println("Sorry! Wrong choice!");
             break;
         }
-        break;
       default:
         System.out.println("Please choose again");
         listSupplierDetails(supId);
@@ -209,19 +216,71 @@ public class SupplierUtil {
     }
   }
 
+  private void updatePersonalDetails(final int supId) {
+    System.out.println("1. Update Address");
+    System.out.println("2. Update Phone");
+    System.out.println("3. Update Email");
+    int op = option.nextInt();
+    int res = 0;
+    String msg = null;
+    switch (op) {
+      case 1:
+        System.out.println("Enter new address: ");
+        System.out.print("City: ");
+        String city = option.next();
+        System.out.print("State: ");
+        String state = option.next();
+        System.out.print("Country: ");
+        String country = option.next();
+        String supAddress = city + ", " + state + ", " + country;
+
+        res = SupplierFactory.updateAddress(supId, supAddress);
+
+        msg = "Address Update Unsuccessful";
+        if (res > 0) {
+          msg = "Address Updated Successfully";
+        }
+        System.out.println(msg);
+        break;
+      case 2:
+        System.out.print("Enter New Phone Number: ");
+        String phone = option.next();
+
+        res = SupplierFactory.updatePhone(supId, phone);
+        msg = "Phone Update Unsuccessful";
+        if (res > 0) {
+          msg = "Phone Updated Successfully";
+        }
+        System.out.println(msg);
+        break;
+      case 3:
+        System.out.print("Email: ");
+        String emailAdd = option.next();
+        res = SupplierFactory.updateEmail(supId, emailAdd);
+        msg = "Email Update Unsuccessful";
+        if (res > 0) {
+          msg = "Email Updated Successfully";
+        }
+        System.out.println(msg);
+        break;
+      default:
+        break;
+    }
+  }
+
   private void addItem(final int supId) {
     System.out.println("Please enter the item details: ");
-    System.out.println("Item Id");
-    int id = option.nextInt();
+    System.out.println("Item Name: ");
     String name = option.next();
+    System.out.println("Price Per Unit: ");
     double price = option.nextDouble();
+    System.out.println("Category: ");
     String cat = option.next();
 
     Items item = new Items();
 
-    String msg = item.addNewItem(supId, id, price, name, cat);
+    String msg = item.addNewItem(supId, price, name, cat);
     System.out.println(msg);
-
   }
 
   private void checkOrders(final int supId) {
@@ -294,6 +353,32 @@ public class SupplierUtil {
       }
     } else {
       System.out.println("Sorry! We are unable to complete your request. Please try later");
+    }
+  }
+
+  private void updateItemDetails(final int argSupplier) {
+    Items[] list = ItemsFactory.retrieveItemsList(argSupplier);
+
+    if (list.length > 0) {
+      for (Items i: list) {
+        System.out.println(i.toString());
+      }
+
+      System.out.println("Enter the ItemId to update: ");
+      int id = option.nextInt();
+
+      Items item = ItemsFactory.listItemDetails(id);
+
+      if (item != null) {
+        System.out.println("Enter the new price: ");
+        double price = option.nextDouble();
+
+        String msg = ItemsFactory.updatePrice(price, id);
+        System.out.println(msg);
+      } else {
+        System.out.println("Wrong Item Id. Please enter the id again");
+        updateItemDetails(argSupplier);
+      }
     }
   }
 }

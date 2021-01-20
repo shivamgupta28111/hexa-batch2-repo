@@ -189,6 +189,11 @@ public class BuyerUtil {
       Items item = ItemsFactory.listItemDetails(id);
 
       if (item != null) {
+        System.out.println("Item Details: ");
+        System.out.println("--------------------");
+        System.out.println(item.toString());
+        System.out.println("==================================================================================");
+        System.out.println();
         Orders o = OrdersFactory.findLastRow();
         int oId = 3001;
         if (o != null) {
