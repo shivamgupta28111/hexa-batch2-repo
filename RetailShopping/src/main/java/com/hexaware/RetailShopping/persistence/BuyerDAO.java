@@ -99,4 +99,15 @@ public interface BuyerDAO {
    */
   @SqlUpdate("UPDATE BUYER SET EMAILADDRESS = :email WHERE BUYERID = :buyerId")
   int updateEmail(@Bind("email") final String email, @Bind("buyerId") final int buyerId);
+
+  /**
+   * for adding to the wallet.
+   * @param currentBalance for current wallet balance
+   * @param amt for new amount
+   * @param buyerId for buyerId
+   * @return int
+   */
+  @SqlUpdate("UPDATE BUYER SET WALLETBALANCE = :currentBalance + :amt WHERE BUYERID = :buyerId")
+  int updateWalletAmount(@Bind("currentBalance") final double currentBalance, @Bind("amt") final double amt,
+      @Bind("buyerId") final int buyerId);
 }
