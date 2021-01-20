@@ -195,12 +195,12 @@ public class SupplierUtil {
               System.out.println(msg);
             } else {
               System.out.println("Passwords don't match. Please try again!");
-              listSupplierDetails(supId);
+              //listSupplierDetails(supId);
             }
             break;
           case 2:
             updatePersonalDetails(supId);
-            System.out.println("Do you want to update any other details? Y or N");
+            System.out.println("Do you want to see or update any other details? Y or N");
             char c = option.next().charAt(0);
             if (c == 'Y' || c == 'y') {
               updatePersonalDetails(supId);
@@ -210,8 +210,8 @@ public class SupplierUtil {
             break;
         }
       default:
-        System.out.println("Please choose again");
-        listSupplierDetails(supId);
+        //System.out.println("Please choose again");
+        //listSupplierDetails(supId);
         break;
     }
   }
@@ -264,6 +264,7 @@ public class SupplierUtil {
         System.out.println(msg);
         break;
       default:
+        listSupplierDetails(supId);
         break;
     }
   }

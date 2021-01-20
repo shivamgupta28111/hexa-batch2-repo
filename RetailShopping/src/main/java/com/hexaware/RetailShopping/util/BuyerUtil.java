@@ -115,9 +115,9 @@ public class BuyerUtil {
    */
   private void buyerSignIn() {
     System.out.println("==========SignIn=========");
-    System.out.println("Username: ");
+    System.out.print("Username: ");
     String user = opt.next();
-    System.out.println("Password: ");
+    System.out.print("Password: ");
     String pass = opt.next();
 
     Login login = LoginFactory.getLoginDetails(user);
@@ -165,6 +165,7 @@ public class BuyerUtil {
       }
     } else {
       System.out.println("Please Register or Login with Correct Credentials");
+      buyerMenu();
     }
   }
 
@@ -186,6 +187,10 @@ public class BuyerUtil {
       System.out.print("Enter Quantity (minimum 1): ");
       int qty = opt.nextInt();
 
+      if (qty < 1) {
+        qty = 1;
+      }
+      
       Items item = ItemsFactory.listItemDetails(id);
 
       if (item != null) {
@@ -200,11 +205,11 @@ public class BuyerUtil {
           oId = o.getOrderId() + 1;
         }
 
-        Date curDate = new Date();
+        Date curDate = new Date(); //dd-mm-yy HH:mm:SS
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-        String date = sdf.format(curDate);
+        String date = sdf.format(curDate); //yyyy-mm-dd (String)
         try {
-          curDate = sdf.parse(date);
+          curDate = sdf.parse(date); //convert and store the string into a date
         } catch (ParseException e) {
           e.printStackTrace();
         }
@@ -259,38 +264,93 @@ public class BuyerUtil {
         System.out.println(b.toString());
         break;
       case 2:
-        System.out.println("Would you like to update your password?");
-        System.out.println("Select Y or N");
-        char op = opt.next().charAt(0);
+        System.out.println("1. Update Password");
+        System.out.println("2. Update Personal Details");
+        System.out.println("Enter your option: ");
+        int op = opt.nextInt();
+
         switch (op) {
-          case 'Y':
-          case 'y':
+          case 1:
             System.out.println("Enter New Password: ");
             String newPass = opt.next();
             System.out.println("Confirm New Password: ");
             String confirmPass = opt.next();
 
             if (newPass.equals(confirmPass)) {
-              //call the method to update password
-              Buyer buyer = new Buyer();
-              buyer.updatePassword(argBuyer, newPass);
+              String msg = LoginFactory.updatePassword(argBuyer, newPass);
+              System.out.println(msg);
             } else {
               System.out.println("Passwords don't match. Please try again!");
-              showBuyerDetails(argBuyer);
             }
             break;
-          case 'N':
-          case 'n':
-            System.out.println("Thank you! Taking you back to the menu now!");
+          case 2:
+            updatePersonalDetails(argBuyer);
+            System.out.println("Do you want to see or update any other details? Y or N");
+            char c = opt.next().charAt(0);
+            if (c == 'Y' || c == 'y') {
+              updatePersonalDetails(argBuyer);
+            }
             break;
           default:
-            System.out.println("Sorry! Wrong choice!");
             break;
         }
         break;
       default:
         System.out.println("Please choose again");
         showBuyerDetails(argBuyer);
+        break;
+    }
+  }
+
+  private void updatePersonalDetails(final int buyer) {
+    System.out.println("1. Update Address");
+    System.out.println("2. Update Phone");
+    System.out.println("3. Update Email");
+    int op = opt.nextInt();
+    int res = 0;
+    String msg = null;
+    switch (op) {
+      case 1:
+        System.out.println("Enter new address: ");
+        System.out.print("City: ");
+        String city = opt.next();
+        System.out.print("State: ");
+        String state = opt.next();
+        System.out.print("Country: ");
+        String country = opt.next();
+        String supAddress = city + ", " + state + ", " + country;
+
+        res = BuyerFactory.updateAddress(buyer, supAddress);
+
+        msg = "Address Update Unsuccessful";
+        if (res > 0) {
+          msg = "Address Updated Successfully";
+        }
+        System.out.println(msg);
+        break;
+      case 2:
+        System.out.print("Enter New Phone Number: ");
+        String phone = opt.next();
+
+        res = BuyerFactory.updatePhone(buyer, phone);
+        msg = "Phone Update Unsuccessful";
+        if (res > 0) {
+          msg = "Phone Updated Successfully";
+        }
+        System.out.println(msg);
+        break;
+      case 3:
+        System.out.print("Email: ");
+        String emailAdd = opt.next();
+        res = BuyerFactory.updateEmail(buyer, emailAdd);
+        msg = "Email Update Unsuccessful";
+        if (res > 0) {
+          msg = "Email Updated Successfully";
+        }
+        System.out.println(msg);
+        break;
+      default:
+        showBuyerDetails(buyer);
         break;
     }
   }
