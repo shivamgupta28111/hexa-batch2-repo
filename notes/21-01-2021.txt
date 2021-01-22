@@ -1,0 +1,92 @@
+JUnit -> unit testing framework
+
+Unit Testing:
+is a process to verify that a piece of code is working.
+done by writing a function/ method
+
+Why?
+1. helps to identify defects
+2. forces the developer to read his code
+3. helps develop reliable, bug - free code
+
+Parts
+1. Test Fixture
+2. Test Suite -> all the test methods are stored inside this class 
+3. Test Cases -> test methods
+4. Annotations
+5. Assertions
+
+Annotations
+1. @Test -> the method is a test case
+Ex:
+   @Test
+   public void testShowAllCars() {
+   
+   }
+
+2. @Before -> specifies that the method should be executed before every test
+3. @After -> specifies that the method has to be executed after every test
+4. @BeforeClass -> executed only once before the test suite is run
+5. @AfterClass -> executed only once after the test suite is run
+
+Assertions -> Assert class
+1. assertEquals(actual, expected)
+2. assertNotEquals(actual, expected)
+3. assertNull(object)
+4. assertNotNull(object)
+5. assertTrue(condition)
+6. assertFalse(condition)
+
+Running test cases in Maven
+1. mvn test -> runs all the test cases across the project
+
+2. mvn -Dtest=<name of test class> test -> runs the test cases in a particular class
+  ex: 
+  mvn -Dtest=CarsTest test
+
+3. mvn -Dtest=<test class name>#<test method name> test -> runs a single testcase only
+  ex:
+  mvn -Dtest=CarsTest#testAddCar test
+========================================================================================
+
+JMockit/Mockito -> Mocking framework
+
+Annotations:
+@Mocked
+@Mock
+
+Anonymous Classes
+Expectations -> used to set the expectations
+MockUp -> Mock a model /factory class
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Tiered architecture
+1. two tier 
+2. multi tier
+	Layer a: Backend/ Persistence layer -> Database
+	Layer b: Business Layer / Business Logic -> Java/C#/Python
+	Layer c: Presentation Layer/Frontend -> UI Layer -> Angular, React, HTML, CSS, JS
+
+TechStack:
+MySQL
+Java, JUnit, JMockit, Maven
+Angular
+
+Git
+Apache Server
+NodeJs and NPM
+
+
+Java To MySQL -> JDBI
+Angular To Java -> Rest Services
+
+
+
+
+
+
+
+
+
+
