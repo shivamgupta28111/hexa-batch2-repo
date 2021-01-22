@@ -30,17 +30,6 @@ public interface LoginDAO {
   int updatePassword(@Bind("pass") final String pass, @Bind("userId") final int userId);
 
   /**
-   * insert a new row.
-   * @param loginId set to 0
-   * @param userName for username
-   * @param password for password
-   * @param userType for usertype
-   */
-  @SqlUpdate("INSERT INTO LOGIN VALUES (:loginId, :username, :password, :usertype)")
-  void addUser(@Bind("loginId") int loginId, @Bind("username") String userName,
-      @Bind("password") String password, @Bind("usertype") String userType);
-
-  /**
    * to update the loginId.
    * @param userId for loginId
    * @param userName for username

@@ -152,7 +152,7 @@ public class Buyer {
    * @param argBal for wallet balance
    */
   public Buyer(final int argBuyerId, final String argBuyerName, final String argAddr,
-      final String argEmailAddr, final String argContact, final double argBal) {
+      final String argContact, final String argEmailAddr, final double argBal) {
     this.buyerId = argBuyerId;
     this.buyerName = argBuyerName;
     this.addr = argAddr;
@@ -235,15 +235,6 @@ public class Buyer {
   public final Buyer listBuyerDetails(final int argBuyerId) {
     Buyer b = BuyerFactory.findBuyer(argBuyerId);
     return b;
-  }
-
-  /**
-   * method to update the password.
-   * @param argBuyerId for buyerId
-   * @param argNewPass for new password
-   */
-  public final void updatePassword(final int argBuyerId, final String argNewPass) {
-    System.out.println("Password updated");
   }
 
   /**

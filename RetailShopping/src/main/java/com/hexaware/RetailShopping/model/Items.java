@@ -227,46 +227,6 @@ public class Items {
     if (res > 0) {
       msg = "New Item Uploaded Successfully";
     }
-
     return msg;
   }
-
-  // public void updateExistingItem(final int argItemId, final double argPrice) {
-
-  // }
-
-  // private void createList() {
-  //   itemsList[0] = new Items(1001, "Lenovo Laptop", 56000.00, 10, "Laptops");
-  //   itemsList[1] = new Items(1002, "Mac Pro", 153000.00, 12, "Laptops");
-  //   itemsList[2] = new Items(1003, "One Plus", 93000.00, 12, "Phones");
-  //   itemsList[3] = new Items(1004, "Nokia 6550", 6000.00, 10, "Phones");
-  // }
-
-  // /**
-  //  * list all items.
-  //  * @return items array
-  //  */
-  // public final Items[] listAllItems() {
-  //   createList();
-  //   return itemsList;
-  // }
-
-  // /**
-  //  * list a particular items details.
-  //  * @param argItemId for item id
-  //  * @return items object
-  //  */
-  // public final Items listItemDetails(final int argItemId) {
-  //   Items it = new Items();
-  //   for (Items item: itemsList) {
-  //     if (item.itemId == argItemId) {
-  //       it = item;
-  //       break;
-  //     }
-  //   }
-  //   return it;
-  // }
-  // public void retrieveItemDetails(final int argItemId) {
-
-  // }
 }

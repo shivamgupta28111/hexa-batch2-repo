@@ -1,10 +1,16 @@
 package com.hexaware.RetailShopping.model;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.assertFalse;
 
 import com.hexaware.RetailShopping.persistence.BuyerDAO;
+import com.hexaware.RetailShopping.persistence.LoginDAO;
 import com.hexaware.RetailShopping.factory.BuyerFactory;
+import com.hexaware.RetailShopping.factory.LoginFactory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +27,7 @@ import mockit.integration.junit4.JMockit;
 @RunWith(JMockit.class)
 public class BuyerTest {
   /**
-   * test the default constructor
+   * test the default constructor.
    */
   @Test
   public final void testBuyer() {
@@ -38,7 +44,7 @@ public class BuyerTest {
     assertEquals("Pathankot, Punjab, India", b.getAddr());
     assertEquals("435839932", b.getContact());
     assertEquals("akhil@abc.c", b.getEmailAddr());
-    assertEquals(450000, b.getWalletBalance(),2);
+    assertEquals(450000, b.getWalletBalance(), 2);
   }
 
   /**
@@ -125,7 +131,7 @@ public class BuyerTest {
     final Buyer b2 = new Buyer(1345, "Anirudh", "Chennai, Tamil Nadu, India", "89345543", "yt@sf.c", 87382);
     final Buyer b3 = new Buyer(1451, "Bhavana Bhat", "Mangalore, Karnakata, India", "82772111", "yr@ss.o", 92811);
 
-    new Expectations(){
+    new Expectations() {
       {
         dao.listBuyerById(1234); result = b1;
         dao.listBuyerById(1345); result = b2;
@@ -153,5 +159,80 @@ public class BuyerTest {
 
     Buyer buyer4 = BuyerFactory.findBuyer(100);
     assertNull(buyer4);
+  }
+
+  /**
+   * test for hashCode method.
+   */
+  @Test
+  public final void testHashCode() {
+    final Buyer b1 = new Buyer(1234, "Akanksha Sinha", "Mangalore, Karnakata, India", "83495735", "wi@we.c", 45230);
+    final Buyer b2 = new Buyer(1345, "Anirudh", "Chennai, Tamil Nadu, India", "89345543", "yt@sf.c", 87382);
+    final Buyer b3 = new Buyer(1234, "Akanksha Sinha", "Mangalore, Karnakata, India", "83495735", "wi@we.c", 45230);
+
+    assertEquals(b1.hashCode(), b3.hashCode());
+    assertNotEquals(b1.hashCode(), b2.hashCode());
+    assertNotEquals(b2.hashCode(), b3.hashCode());
+  }
+
+  /**
+   * test for equals method.
+   */
+  @Test
+  public final void testEquals() {
+    final Buyer b1 = new Buyer(1234, "Akanksha Sinha", "Mangalore, Karnakata, India", "83495735", "wi@we.c", 45230);
+    final Buyer b2 = new Buyer(1345, "Anirudh", "Chennai, Tamil Nadu, India", "89345543", "yt@sf.c", 87382);
+    final Buyer b3 = new Buyer(1234, "Akanksha Sinha", "Mangalore, Karnakata, India", "83495735", "wi@we.c", 45230);
+
+    assertTrue(b1.equals(b3));
+    assertFalse(b2.equals(b1));
+    assertFalse(b2.equals(b3));
+
+    Buyer b = null;
+    assertFalse(b1.equals(b));
+  }
+
+  /**
+   * test for registerNewBuyer method.
+   * @param dao for BuyerDao
+   * @param lDao for LoginDao
+   */
+  @Test
+  public final void testRegisterNewBuyer(@Mocked final BuyerDAO dao, @Mocked final LoginDAO lDao) {
+
+    new Expectations() {
+      {
+        Buyer b = new Buyer(1005, "Akanksha Sinha", "Mangalore, Karnakata, India", "83495735", "wi@we.c", 45230);
+        dao.findLastRow(); result = b;
+        dao.registerBuyer(1006, "Kumar", "Vijayawada, Andhra Pradesh, India", "3489392", "tr@w.c", 450000);
+        result = 1;
+      }
+    };
+
+    new Expectations() {
+      {
+
+        lDao.registerLogin(1006, "kumar", "kumar", UserType.BUYER.name());
+        result = 1;
+      }
+    };
+
+    new MockUp<BuyerFactory>() {
+      @Mock
+      BuyerDAO dao() {
+        return dao;
+      }
+    };
+
+    new MockUp<LoginFactory>() {
+      @Mock
+      LoginDAO dao() {
+        return lDao;
+      }
+    };
+
+    Buyer buyer = new Buyer();
+    String msg = buyer.registerNewBuyer("Kumar", "Vijayawada, Andhra Pradesh, India", "3489392", "tr@w.c", "kumar", "kumar", UserType.BUYER.name());
+    assertEquals(msg, "Registration successful. Please Login to continue");
   }
 }

@@ -1,6 +1,7 @@
 package com.hexaware.RetailShopping.model;
 
-import java.util.Date;
+//import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -14,7 +15,7 @@ public class Orders {
   /**
    * orderDate for order date.
    */
-  private Date orderDate;
+  private LocalDate orderDate;
   /**
    * buyerId for buyer id.
    */
@@ -62,7 +63,7 @@ public class Orders {
    *
    * @return orderDate.
    */
-  public final Date getOrderDate() {
+  public final LocalDate getOrderDate() {
     return this.orderDate;
   }
 
@@ -70,7 +71,7 @@ public class Orders {
    *
    * @param argOrderDate to set order date.
    */
-  public final void setOrderDate(final Date argOrderDate) {
+  public final void setOrderDate(final LocalDate argOrderDate) {
     this.orderDate = argOrderDate;
   }
 
@@ -186,7 +187,7 @@ public class Orders {
    * @param argItemQty for itemQuantity
    * @param argOrderStatus for orderStatus
    */
-  public Orders(final int argOrderId, final Date argOrderDate,
+  public Orders(final int argOrderId, final LocalDate argOrderDate,
       final int argBuyerId, final int argSupplierId, final int argItemId,
       final int argItemQty, final OrderStatus argOrderStatus) {
     this.orderId = argOrderId;

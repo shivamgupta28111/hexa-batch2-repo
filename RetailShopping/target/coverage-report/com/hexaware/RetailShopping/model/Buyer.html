@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buyer.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>RetailShopping\src\main\java\com\hexaware\RetailShopping\model\Buyer.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.hexaware.RetailShopping.model;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.util.Objects;
+
+import com.hexaware.RetailShopping.factory.BuyerFactory;
+import com.hexaware.RetailShopping.factory.LoginFactory;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * Buyer class.
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>11</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class Buyer {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * buyerId to store buyer Id.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  private int <span class='instance covered' title='Reads: 22 Writes: 19'>buyerId</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * buyerName to store buyer name.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  private String <span class='instance covered' title='Reads: 17 Writes: 19'>buyerName</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * addr to store buyer address.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  private String <span class='instance covered' title='Reads: 17 Writes: 19'>addr</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * contact to store buyer Contact #.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  private String <span class='instance covered' title='Reads: 17 Writes: 19'>contact</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * emailAddr to store the email address.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  private String <span class='instance covered' title='Reads: 16 Writes: 19'>emailAddr</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * walletBalance for wallet balance.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  private double <span class='instance covered' title='Reads: 16 Writes: 19'>walletBalance</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @return buyerId.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final int getBuyerId() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l47s0'>    return this.buyerId;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 57</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 42</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 116</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @param argCustId for buyerId.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void setBuyerId(final int argCustId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l55s0'>    this.buyerId = argCustId;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 56</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 35</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l56s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 56</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 35</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @return buyerName.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final String getBuyerName() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l63s0'>    return this.buyerName;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 67</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 43</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 117</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>64</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @param argCustName for buyerName.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void setBuyerName(final String argCustName) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l71s0'>    this.buyerName = argCustName;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 66</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 36</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l72s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 66</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 36</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @return addr.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>78</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final String getAddr() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>79</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l79s0'>    return this.addr;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 44</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 77</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 118</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @param argAddr for addr.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void setAddr(final String argAddr) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>87</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l87s0'>    this.addr = argAddr;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 37</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 76</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l88s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 37</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 76</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @return contact.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>94</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final String getContact() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>95</td><td class='count'>3</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l95s0'>    return this.contact;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 45</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 87</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 119</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>96</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @param argContact for contact.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void setContact(final String argContact) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>103</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l103s0'>    this.contact = argContact;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 38</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 86</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>104</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l104s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 38</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 86</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @return emailAddr.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>110</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final String getEmailAddr() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>111</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l111s0'>    return this.emailAddr;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 46</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetEmailAddress: 97</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>112</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @param argEmail for emailAddr.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void setEmailAddr(final String argEmail) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l119s0'>    this.emailAddr = argEmail;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 39</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetEmailAddress: 96</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l120s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 39</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetEmailAddress: 96</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @return walletBalance.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>126</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final double getWalletBalance() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>127</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l127s0'>    return this.walletBalance;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 107</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 47</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   *
+   * @param argBal for walletBalance.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>134</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void setWalletBalance(final double argBal) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>135</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l135s0'>    this.walletBalance = argBal;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 106</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 40</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>136</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l136s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 106</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 40</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * default constructor.
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>141</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l141s0'>  public Buyer() {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 34</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 234</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>143</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l143s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyer: 34</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 234</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * parameterized constructor.
+   * @param argBuyerId for buyer Id
+   * @param argBuyerName for buyer name
+   * @param argAddr for address
+   * @param argEmailAddr for email address
+   * @param argContact for contact
+   * @param argBal for wallet balance
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>154</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l154s0'>  public Buyer(final int argBuyerId, final String argBuyerName, final String argAddr,</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>155</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      final String argEmailAddr, final String argContact, final double argBal) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>156</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l156s0'>    this.buyerId = argBuyerId;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>157</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l157s0'>    this.buyerName = argBuyerName;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>158</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l158s0'>    this.addr = argAddr;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>159</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l159s0'>    this.contact = argContact;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>160</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l160s0'>    this.emailAddr = argEmailAddr;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>161</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l161s0'>    this.walletBalance = argBal;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>162</td><td class='count'>17</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l162s0'>  }</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerName: 65</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetBuyerId: 55</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetWalletBalance: 105</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetContact: 85</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 203</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 169, 170, 171</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testSetAddress: 75</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testBuyers: 115</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * equals method.
+   * @param obj Object
+   * @return boolean value
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>169</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>170</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final boolean equals(final Object obj) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>7</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 3/9</span>
+        <span class='covered' onclick="showPath(this,'l171s0 l172s0')">A: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l171s0 l174s0 l175s0')">B: 0</span>
+        <span class='covered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l179s0 l180s0 l181s0 l182s0 l183s0 l184s0')">C: 4</span>
+        <span class='covered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l186s0')">D: 2</span>
+        <span class='uncovered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l179s0 l186s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l179s0 l180s0 l186s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l179s0 l180s0 l181s0 l186s0')">G: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l179s0 l180s0 l181s0 l182s0 l186s0')">H: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l171s0 l174s0 l177s0 l178s0 l179s0 l180s0 l181s0 l182s0 l183s0 l186s0')">I: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>171</td><td class='count'>7</td>
+      <td><pre class='prettyprint jmp'>    <span id='l171s0' title='Executions: 7' class='covered cp' onclick='showHide(this,0)'>if (obj == null)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187, 188, 189, 192</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>172</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l172s0'>      return false;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 192</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>173</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>174</td><td class='count'>6</td>
+      <td><pre class='prettyprint jmp'>    <span id='l174s0' title='Executions: 6' class='covered cp' onclick='showHide(this,0)'>if (getClass() != obj.getClass())</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187, 188, 189</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>175</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l175s0'>      return false;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>176</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>177</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l177s0'>    Buyer buyer = (Buyer) obj;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187, 188, 189</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>178</td><td class='count'>6</td>
+      <td><pre class='prettyprint jmp'>    <span id='l178s0' title='Executions: 6' class='covered cp' onclick='showHide(this,0)'>if (Objects.equals(buyerId, buyer.buyerId)</span></pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187, 188, 189</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>179</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>        && <span id='l179s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>Objects.equals(buyerName, buyer.buyerName)</span></pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>180</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>        && <span id='l180s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>Objects.equals(addr, buyer.addr)</span></pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>181</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>        && <span id='l181s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>Objects.equals(contact, buyer.contact)</span></pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>182</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>        && <span id='l182s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>Objects.equals(emailAddr, buyer.emailAddr)</span></pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>183</td><td class='count'>4</td>
+      <td><pre class='prettyprint jmp'>        && <span id='l183s0' title='Executions: 4' class='covered cp' onclick='showHide(this,0)'>Objects.equals(walletBalance, buyer.walletBalance)) {</span></pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>184</td><td class='count'>4</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l184s0'>      return true;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 187</li>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testListBuyerDetails: 152, 155, 158</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>185</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>186</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l186s0'>    return false;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testEquals: 188, 189</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>187</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * hashcode method.
+   * @return hash code
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>193</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>194</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final int hashCode() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>195</td><td class='count'>6</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l195s0'>    return Objects.hash(buyerId, buyerName, addr, emailAddr, contact, walletBalance);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testHashCode: 173x2, 174x2, 175x2</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>196</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * toString method.
+   * @return string
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>202</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>203</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final String toString() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>204</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l204s0'>    return "Buyer: [Buyer Id: " + this.buyerId</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>205</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l205s0'>        + " Buyer Name: " + this.buyerName</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>206</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l206s0'>        + " Address: " + this.addr</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>207</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l207s0'>        + " Email Id: " + this.emailAddr</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>208</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l208s0'>        + " Contact #: " + this.contact</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>209</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l209s0'>        + " Wallet Balance: " + this.walletBalance</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>210</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l210s0'>        + " ]";</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>211</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>213</td><td>&nbsp;</td>
+      <td><pre class='comment'>  // private Buyer[] createBuyerList() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>214</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   Buyer[] buyers = new Buyer[5];</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>216</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   buyers[0] = new Buyer(101, "Alex Jones", "Jaipur, Rajasthan, India", "alex.jones@abc.com",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>217</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //       "923842221", 4500.00);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>218</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   buyers[1] = new Buyer(102, "Kavitha K", "Mumbai, Maharashtra, India", "kk@xyz.com",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>219</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //       "983773722", 4500.00);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>220</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   buyers[2] = new Buyer(103, "Ravi L", "Guntur, AP, India", "ravi_l@xyz.com",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>221</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //       "999001002", 4500.00);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>222</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   buyers[3] = new Buyer(104, "James W", "Delhi, Delhi, India", "jw123@xyz.com",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>223</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //       "7292929222", 4500.00);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>224</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   buyers[4] = new Buyer(105, "Lavanya M", "Bangalore, Karnataka, India", "lav_m@abc.com",</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>225</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //       "7288920021", 4500.00);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>227</td><td>&nbsp;</td>
+      <td><pre class='comment'>  //   return buyers;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>228</td><td>&nbsp;</td>
+      <td><pre class='comment'>  // }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * method to list a single buyer's details.
+   * @param argBuyerId for buyerId
+   * @return buyer object
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>235</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final Buyer listBuyerDetails(final int argBuyerId) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>236</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l236s0'>    Buyer b = BuyerFactory.findBuyer(argBuyerId);</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>237</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l237s0'>    return b;</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>238</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * method to update the password.
+   * @param argBuyerId for buyerId
+   * @param argNewPass for new password
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>245</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final void updatePassword(final int argBuyerId, final String argNewPass) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>246</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l246s0'>    System.out.println("Password updated");</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>247</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l247s0'>  }</pre>
+        <ol style='display:none'></ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>  /**
+   * to register a new buyer.
+   * @param argBuyerName for buyer name
+   * @param argAddr for address
+   * @param argPhone for phone
+   * @param argEmail for email
+   * @param user for username
+   * @param pass for password
+   * @param ut for usertype
+   * @return string
+   */</div><span>  /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>260</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  public final String registerNewBuyer(final String argBuyerName, final String argAddr,</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>261</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      final String argPhone, final String argEmail, final String user,</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>262</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      final String pass, final String ut) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>1</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#d42b00' onclick='hidePath()'>Path coverage: 1/6</span>
+        <span class='uncovered' onclick="showPath(this,'l263s0 l268s0 l271s0 l272s0 l278s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l263s0 l268s0 l271s0 l272s0 l273s0 l274s0 l278s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l263s0 l268s0 l271s0 l272s0 l273s0 l274s0 l275s0 l278s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l263s0 l268s0 l269s0 l271s0 l272s0 l278s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l263s0 l268s0 l269s0 l271s0 l272s0 l273s0 l274s0 l278s0')">E: 0</span>
+        <span class='covered' onclick="showPath(this,'l263s0 l268s0 l269s0 l271s0 l272s0 l273s0 l274s0 l275s0 l278s0')">F: 1</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>263</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l263s0'>    double wallet = 450000.00;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>264</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l264s0'>    String msg = "Registration Unsuccessful";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>265</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l265s0'>    Buyer b = BuyerFactory.findLastRow();</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>267</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l267s0'>    int id = 1001;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>268</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>    <span id='l268s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>if (b != null)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>269</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l269s0'>      id = b.getBuyerId() + 1;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>270</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>271</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l271s0'>    int res = BuyerFactory.registerBuyer(id, argBuyerName, argAddr, argPhone, argEmail, wallet);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>272</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>    <span id='l272s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>if (res > 0)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>273</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l273s0'>      res = LoginFactory.registerLogin(id, user, pass, ut);</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>274</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>      <span id='l274s0' title='Executions: 1' class='covered cp' onclick='showHide(this,0)'>if (res > 0)</span> {</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>275</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l275s0'>        msg = "Registration successful. Please Login to continue";</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>276</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>      }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>277</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>278</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered cp' onclick='showHide(this)' id='l278s0'>    return msg;</pre>
+        <ol style='display:none'>
+          <li>com.hexaware.RetailShopping.model.BuyerTest#testRegisterNewBuyer: 235</li>
+        </ol>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>279</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>  }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>280</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>
